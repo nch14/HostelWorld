@@ -2,6 +2,8 @@ package cn.chenhaonee.hostelWorld.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,16 +12,27 @@ import java.util.List;
 @Entity
 public class MemberCard {
     @Id
-    private Long id;
+    private String id;
     private Double sumCost;
     private int currentMarks;
-    //private List<CardEventLog> cardEventLogList;
+    @OneToMany
+    private List<CardEventLog> cardEventLogList;
 
-    public Long getId() {
+    public MemberCard() {
+    }
+
+    public MemberCard(String id) {
+        this.id = id;
+        sumCost = 0.0;
+        currentMarks =0;
+        cardEventLogList = new ArrayList<>();
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

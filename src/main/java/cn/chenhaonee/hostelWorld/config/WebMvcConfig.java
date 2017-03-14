@@ -1,4 +1,4 @@
-package cn.chenhaonee.hostelWorld.configure;
+package cn.chenhaonee.hostelWorld.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

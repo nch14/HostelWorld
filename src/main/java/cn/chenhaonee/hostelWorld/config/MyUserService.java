@@ -1,4 +1,4 @@
-package cn.chenhaonee.hostelWorld.configure;
+package cn.chenhaonee.hostelWorld.config;
 
 import cn.chenhaonee.hostelWorld.dao.UserRepository;
 import cn.chenhaonee.hostelWorld.model.User;
