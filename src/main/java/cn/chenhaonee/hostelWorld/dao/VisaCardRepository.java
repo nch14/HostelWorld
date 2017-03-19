@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.dao;
 
-import cn.chenhaonee.hostelWorld.model.VisaCard;
+import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

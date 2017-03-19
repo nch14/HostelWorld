@@ -1,0 +1,3492 @@
+/*这是给管理员界面用的css*/
+
+.boss-allEelments {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow-x: hidden !important;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    font-family: "STHeiti", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    /*background-color: MistyRose;*/
+    background-color: white;
+    /*background-color: rgba(255, 228, 225, 0.91);*/
+    /*background-color: #de5f51 !important;*/
+}
+
+.boss-top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+    /*pointer-events: all;*/
+    z-index: 2;
+    background-color: gainsboro;
+    background-color: #2f2f2f;
+    width: 100%;
+    height: 8%;
+    /*border-bottom: solid 1px gainsboro;*/
+}
+
+.goods-basic {
+    position: absolute;
+    float: left;
+    top: 8%;
+    left: 0;
+    /*pointer-events: all;*/
+    /*background-color: MistyRose;*/
+    background-color: white;
+    /*background-color:green;*/
+    width: 100%;
+    height: 92%;
+}
+
+
+.full-basic {
+    position: absolute;
+    float: left;
+    top: 15%;
+    left: 0;
+    /*pointer-events: all;*/
+    background-color: white;
+    /*background-color:green;*/
+    width: 100%;
+    height: auto;
+}
+
+.sale-basic-div {
+    position: relative;
+    float: left;
+    left: 4%;
+    top: 5%;
+    width: 44%;
+    height: 88%;
+    padding: 5px;
+    margin-right: 2%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 15px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 3px #555555;
+    -o-box-shadow: 0px 0px 15px 3px #555555;
+    box-shadow: 0px 0px 15px 3px #555555;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.sale-basic-div:hover {
+    -moz-box-shadow: 0px 0px 15px 7px #555555; /* 老的 Firefox */
+    box-shadow: 0px 0px 15px 7px #555555;
+}
+
+.sale-basic-div p{
+    position: relative;
+    float: left;
+    left: 14%;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 300;
+    margin-left: 2%;
+}
+
+.sale-basic-div input{
+    position: relative;
+    float: left;
+    top: 2%;
+    left: 16%;
+    width: 14%;
+    height: 5%;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.sale-basic-div select{
+    position: relative;
+    float: left;
+    top: 2%;
+    left: 16%;
+    width: 14%;
+    height: 5%;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.half-height-div-big {
+    height: 50%;
+    margin-bottom: 2%;
+}
+
+.half-height-div-small {
+    height: 32%;
+    margin-bottom: 2%;
+}
+
+.new-goods-left {
+    position: relative;
+    float: left;
+    left: 4%;
+    top: 0%;
+    width: 65%;
+    height: 100%;
+
+    /*background-color: #0ba65b;*/
+}
+
+.new-goods-center {
+    position: relative;
+    float: left;
+    left: 20%;
+    top: 5%;
+    width: 60%;
+    height: 100%;
+
+    /*background-color: teal;*/
+}
+
+.new-goods-price-left {
+    position: relative;
+    float: left;
+    left: 4%;
+    top: 0%;
+    width: 70%;
+    height: 100%;
+
+    /*background-color: #0ba65b;*/
+}
+
+.orders-left {
+    position: fixed;
+    left: 0%;
+    top: 11%;
+    width: 15%;
+    height: 100%;
+
+    /*background-color: #0ba65b;*/
+}
+
+.orders-right {
+    position: absolute;
+    left: 15%;
+    top: 4%;
+    width: 85%;
+    height: 100%;
+    /*height: auto;*/
+    overflow-x: hidden;
+
+    /*background-color: #0ba65b;*/
+}
+
+.orders-left-button {
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 2%;
+    width: 100%;
+    height: 10%;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    color: black;
+    background-color: whitesmoke;
+}
+
+.orders-left-button:hover {
+    background-color: #cecece;
+}
+
+.orders-left-button-active {
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 2%;
+    width: 100%;
+    height: 10%;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    color: black;
+    /*background-color: whitesmoke;*/
+    background-color: gainsboro;
+}
+
+.no-padding-element {
+    padding: 0px;
+}
+
+.new-category-btn-div{
+    position: fixed;
+    top: 13%;
+    left: 62.5%;
+    width: 6.5%;
+    height: 6.5%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.new-category-btn-div:hover{
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-category-btn-div:active{
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+
+.new-category-btn-div p{
+    position: relative;
+    float: left;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-category-btn-div p:hover{
+    top: -6%;
+    font-size: 17px;
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-category-div{
+    position: fixed;
+    top: 13%;
+    left: 5%;
+    width: 55%;
+    height: 6.5%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+    text-align: justify;
+    text-align-last: justify;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.new-category-div:hover {
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-category-div:focus {
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-category-div:active {
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.warning-text{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 6.5%;
+    text-align: center;
+    color: #cb0000;
+}
+
+.new-product-per-div {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 6.5%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+    text-align: justify;
+    text-align-last: justify;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.new-product-per-div:hover {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 8%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-product-per-div:active {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 8%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.new-product-per-div-p{
+    position: relative;
+    float: left;
+    left: 16%;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 2%;
+}
+
+.new-product-per-div-date{
+    position: relative;
+    float: left;
+    top: 20%;
+    left: 16%;
+    width: 18%;
+    height: 60%;
+    margin-left: 10px;
+}
+
+
+.input-pic-div {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 48%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.input-pic-div:hover {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 50%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.input-pic-div-thinner {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 25%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.input-pic-div-thinner:hover {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 27%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.per-order-div {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 1%;
+    width: 90%;
+    height: 26%;
+    padding: 5px;
+    /*margin-bottom: 0.5%;*/
+    margin-right: 1%;
+    margin-top: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.per-order-div:hover {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 1%;
+    width: 90%;
+    height: 26%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    margin-right: 1%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.input-price-div {
+    position: absolute;
+    left: 2%;
+    top: 5%;
+    /*overflow-x: hidden !important;*/
+    width: 95%;
+    height: 88%;
+
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.input-price-div:hover {
+    position: absolute;
+    left: 1%;
+    top: 4%;
+    overflow-x: hidden !important;
+    width: 97%;
+    height: 90%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.price-input-div{
+    position: absolute;
+    left: 0%;
+    top: 15%;
+    overflow-x: hidden !important;
+    width: 98%;
+    height: 80%;
+
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+}
+
+.pic-input-div {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 5%;
+    width: 30%;
+    height: 70%;
+    /*background-color: green;*/
+}
+
+.pic-input-div input {
+    position: relative;
+    float: left;
+    left: 0;
+    top: 8%;
+    width: 80%;
+    height: 14%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-bottom: 10px;
+    /*background-color: antiquewhite;*/
+}
+
+.input-image-div {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 0%;
+    width: 60%;
+    height: 80%;
+    /*background-color: green;*/
+}
+
+.input-image-div img {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 5%;
+    width: 90px;
+    height: 90px;
+    /*border: 0px;*/
+    border: solid whitesmoke 1px;
+    margin-left: 7%;
+    margin-bottom: 3%;
+    /*background-color: aquamarine;*/
+}
+
+.product-notice-div {
+    position: fixed;
+    right: 4%;
+    top: 12%;
+    width: 25%;
+    height: 67%;
+    padding: 5px;
+    margin-left: 1%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.product-notice-div:hover {
+
+    -moz-box-shadow: 0px 0px 15px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 3px #555555;
+    -o-box-shadow: 0px 0px 15px 3px #555555;
+    box-shadow: 0px 0px 15px 3px #555555;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.newCategory-btn-div {
+    position: fixed;
+    right: 4%;
+    top: 60%;
+    width: 16%;
+    height: 14%;
+    padding-top: 4%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 1%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.newCategory-btn-div:hover {
+
+    -moz-box-shadow: 0px 0px 15px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 3px #555555;
+    -o-box-shadow: 0px 0px 15px 3px #555555;
+    box-shadow: 0px 0px 15px 3px #555555;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.goods-img-p{
+    position: relative;
+    float: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /*background-color: #0ba65b;*/
+}
+
+.goods-detail {
+    position: relative;
+    float: left;
+    top: 8%;
+    left: 0;
+    /*pointer-events: all;*/
+    /*background-color: #0ba65b;*/
+    /*background-color:green;*/
+    width: 100%;
+    height: 92%;
+}
+
+.shop-head {
+    position: relative;
+    float: left;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 15%;
+    font-size: 20px;
+    font-weight: 500;
+    color: gainsboro;
+    padding-left: 3%;
+    /*background-color: #00a6a0;*/
+}
+
+.login-shop-head {
+    position: relative;
+    float: left;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 500;
+    color: gainsboro;
+    /*background-color: #00a6a0;*/
+}
+
+.message-head {
+    position: relative;
+    float: right;
+    top: 30%;
+    right: 0;
+    z-index: 2;
+    width: 20%;
+    padding-left: 5%;
+
+    /*background-color: blueviolet;*/
+}
+
+.message-head button {
+    width: 40%;
+    height: 60%;
+    font-size: 16px;
+    font-weight: 400;
+    color: gainsboro;
+    background-color: #aaaaaa;
+    background-color: #2f2f2f;
+    border: none;
+    outline: none;
+}
+
+.message-head button:hover {
+    color: #ff8696;
+    font-weight: 500;
+}
+
+.message-head button:focus {
+    color: #ff7292;
+    font-weight: 500;
+}
+
+.message-head button:active {
+    color: #ff7292;
+    font-weight: 500;
+}
+
+.button-bar {
+    position: relative;
+    float: right;
+    top: 30%;
+    right: 0;
+    z-index: 2;
+    width: 50%;
+    padding-left: 5%;
+
+    /*background-color: green;*/
+}
+
+.button-bar-button {
+
+    width: 15%;
+    height: 60%;
+    font-size: 16px;
+    font-weight: 400;
+    color: gainsboro;
+    /*background-color: #aaaaaa;*/
+    /*background-color: gainsboro;*/
+    background-color: #2f2f2f;
+
+    border: none;
+    outline: none;
+
+}
+
+.button-bar-button:hover {
+    color: #0ba65b;
+
+}
+
+.button-bar-button:focus {
+    outline: none;
+    border: none;
+    font-weight: 500;
+    color: #1B977B;
+
+}
+
+.button-bar-button:active {
+    outline: none;
+    border: none;
+    font-weight: 500;
+    color: #1B977B;
+
+}
+
+.button-bar-button-selected {
+    border: none;
+    color: #1B977B;
+}
+
+.sale-basic-head {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 0%;
+    width: 90%;
+    font-size: 22px;
+    font-weight: 400;
+    color: #555555;
+    /*background-color: #0ba65b;*/
+}
+
+.sale-basic-head-middle {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 0%;
+    width: 90%;
+    font-size: 22px;
+    font-weight: 400;
+    color: #555555;
+    text-align: center;
+    /*background-color: #0ba65b;*/
+}
+
+.add-goods-head {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 0%;
+    width: 80%;
+    font-size: 20px;
+    font-weight: 400;
+    color: #555555;
+    margin-bottom: 5px;
+    /*background-color: #0ba65b;*/
+}
+
+.add-category-head {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 0%;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    color: #555555;
+    margin-bottom: 5px;
+    text-align: center;
+    /*background-color: #0ba65b;*/
+}
+
+.add-goods-price-head {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 0%;
+    width: 20%;
+    font-size: 20px;
+    font-weight: 400;
+    color: #555555;
+    margin-bottom: 5px;
+    /*background-color: #0ba65b;*/
+}
+
+.add-goods-close-btn {
+    position: relative;
+    float: right;
+    right: 1%;
+    top: 15%;
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #555555;
+    margin-bottom: 5px;
+    border-radius: 26px;
+    outline: none;
+    background-color: whitesmoke;
+}
+
+.add-goods-close-btn:hover{
+    color: grey;
+    background-color: white;
+}
+
+.text-center {
+    top: 10%;
+    text-align: center;
+}
+
+.text-to-center {
+    position: relative;
+    float: left;
+    left: 35%;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.text-center-small-button {
+    top: -20%;
+    text-align: center;
+}
+
+.text-center-square-button {
+    top: -20%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.head-center {
+    position: relative;
+    float: left;
+    top: -20%;
+    left: 0;
+    z-index: 2;
+    width: 60%;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    color: gainsboro;
+    padding-left: 3%;
+
+}
+
+.text-small {
+    top: -5%;
+    left: 25%;
+    width: 50%;
+    font-size: 18px;
+    transition: 0.3s;
+    -moz-transition: 0.3s; /* Firefox 4 */
+    -webkit-transition: 0.3s; /* Safari and Chrome */
+    -o-transition: 0.3s; /* Opera */
+}
+
+.text-middle {
+    top: 8%;
+    font-size: 20px;
+    text-align: center;
+    /*background-color: teal;*/
+}
+
+.text-big {
+    top: -22%;
+    font-size: 28px;
+    transition: 0.3s;
+    -moz-transition: 0.3s; /* Firefox 4 */
+    -webkit-transition: 0.3s; /* Safari and Chrome */
+    -o-transition: 0.3s; /* Opera */
+}
+
+.text-big-middle-position {
+    top: 0%;
+    font-size: 28px;
+    transition: 0.3s;
+    -moz-transition: 0.3s; /* Firefox 4 */
+    -webkit-transition: 0.3s; /* Safari and Chrome */
+    -o-transition: 0.3s; /* Opera */
+}
+
+.text-middleBig {
+    top: -28%;
+    font-size: 32px;
+    transition: 0.3s;
+    -moz-transition: 0.3s; /* Firefox 4 */
+    -webkit-transition: 0.3s; /* Safari and Chrome */
+    -o-transition: 0.3s; /* Opera */
+}
+
+.text-superBig {
+    top: -10%;
+    font-size: 42px;
+    transition: 0.3s;
+    -moz-transition: 0.3s; /* Firefox 4 */
+    -webkit-transition: 0.3s; /* Safari and Chrome */
+    -o-transition: 0.3s; /* Opera */
+}
+
+.text-to-right {
+    text-align: right;
+}
+
+.charts-div {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 1%;
+    width: 90%;
+    height: 50%;
+
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*background: #000;*/
+}
+
+.charts-div-left {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: -18%;
+    width: 100%;
+    height: 100%;
+
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*background: #000;*/
+}
+
+.charts-div-left-small {
+    position: relative;
+    float: left;
+    left: -1%;
+    top: -42%;
+    width: 98%;
+    height: 130%;
+
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*background: #000;*/
+}
+
+.sale-basic-data-holder {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 2%;
+    width: 90%;
+    height: 33%;
+    /*background-color: #0ba65b;*/
+}
+
+.sale-basic-inner {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 4%;
+    width: 45%;
+    height: 44%;
+    /*margin: 1px;*/
+    /*background-color: darkgoldenrod;*/
+}
+
+.left-top {
+    border-bottom: solid gainsboro 1px;
+    /*border-right: solid gainsboro 1px;*/
+}
+
+.left-bottom {
+    /*border-top: solid gainsboro 1px;*/
+    border-right: solid gainsboro 1px;
+}
+
+.right-bottom {
+    /*border-top: solid gainsboro 1px;*/
+    /*border-left: solid gainsboro 1px;*/
+}
+
+.right-top {
+    border-bottom: solid gainsboro 1px;
+    border-left: solid gainsboro 1px;
+}
+
+.sale-basic-inner-head {
+
+    font-size: 12px;
+    font-weight: 300;
+    color: gray;
+    /*background-color: green;*/
+}
+
+.left-top-data {
+    position: relative;
+    float: right;
+    right: 3%;
+    top: 80%;
+    width: 95%;
+    text-align: right;
+}
+
+.left-bottom-data {
+    position: relative;
+    float: right;
+    right: 3%;
+    top: 5%;
+    width: 95%;
+    text-align: right;
+}
+
+.right-bottom-data {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    text-align: left;
+}
+
+.right-top-data {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 80%;
+    width: 95%;
+    text-align: left;
+}
+
+.sale-basic-inner-data {
+    position: relative;
+    float: left;
+    left: 4%;
+    top: 6%;
+    width: 80%;
+    font-size: 43px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+    color: #c71d21;
+    text-align: center;
+    /*color: #AA1E20;*/
+    /*background-color: green;*/
+}
+
+.table-with-pic-div {
+    top: 7%;
+    height: 85%;
+    left: 10%;
+    width: 80%;
+    /*margin-right: 2%;*/
+}
+
+.new-goods-div {
+    top: 7%;
+    height: 15%;
+    width: 25%;
+    margin-bottom: 3%;
+}
+
+.commit-newGoods-div {
+    position: fixed;
+    right: 4%;
+    top: 84%;
+    width: 16%;
+    height: 9%;
+}
+
+.commit-newSaler-div {
+    position: fixed;
+    right: 4%;
+    top: 84%;
+    width: 25%;
+    height: 10%;
+}
+
+.add-property-div {
+    position: fixed;
+    right: 22%;
+    top: 84%;
+    width: 7%;
+    height: 9%;
+}
+
+.goods-detail-data-div {
+    /*top: 7%;*/
+    height: 64%;
+    width: 25%;
+    /*margin-bottom: 2%;*/
+}
+
+.new-product-per-p {
+    position: relative;
+    float: left;
+    left: 9%;
+    top: -10%;
+    width: 18%;
+    height: 60%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-right: 15%;
+    /*background-color: green;*/
+}
+
+.new-product-per-p-high {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: -5%;
+    width: 95%;
+    /*height: 60%;*/
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-bottom: 0%;
+    /*background-color: green;*/
+}
+
+.two-hundred-height{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 20%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+}
+
+.three-hundred-height{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 150px;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+}
+
+.super-high{
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 5%;
+    width: 100%;
+    height: 500px;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+}
+
+.new-price-per-p {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 0;
+    width: 30%;
+    height: 60%;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-top: 1%;
+    margin-right: 5%;
+    text-align: center;
+    /*background-color: green;*/
+}
+
+.new-category-per-p {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: -20%;
+    width: 30%;
+    height: 70%;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-top: 1%;
+    margin-right: 5%;
+    /*text-align: center;*/
+    /*background-color: green;*/
+}
+
+.new-category-unit-p {
+    position: relative;
+    float: left;
+    left: 7%;
+    top: 15%;
+    width: 3.5%;
+    height: 60%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-top: 1%;
+    /*margin-right: 18%;*/
+    /*background-color: green;*/
+}
+
+
+.new-price-unit-p {
+    position: relative;
+    float: left;
+    left: 1.5%;
+    top: 0;
+    width: 3.5%;
+    height: 60%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-top: 1%;
+    /*margin-right: 18%;*/
+    /*background-color: green;*/
+}
+
+.new-sale-unit-p {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 0;
+    width: 8%;
+    height: 60%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    margin-top: 1%;
+    /*margin-right: 18%;*/
+    /*background-color: green;*/
+}
+
+.new-product-per-input-left {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 8%;
+    width: 13%;
+    height: 70%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 10px;
+    color: #555555;
+    margin-right: 12%;
+    /*background-color: green;*/
+}
+
+.new-product-per-input {
+    position: relative;
+    float: left;
+    left: 0;
+    top: 8%;
+    width: 60%;
+    height: 70%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    /*background-color: green;*/
+}
+
+.big-per-input {
+    position: relative;
+    float: left;
+    left: 0;
+    top: 15%;
+    width: 60%;
+    height: 70%;
+    margin-top: 1.5%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    /*background-color: green;*/
+}
+
+.new-price-per-input {
+    position: relative;
+    float: left;
+    left: 1%;
+    top: 5%;
+    width: 10%;
+    height: 70%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-left: 1%;
+    /*background-color: green;*/
+}
+
+.show-anyway {
+    z-index: 99999;
+}
+
+.product-notice-inside {
+    position: fixed;
+    right: 4.7%;
+    top: 13%;
+    width: 23%;
+    height: 63%;
+    padding: 5px;
+    margin-left: 1%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    /*background-color: #0ba65b;*/
+}
+
+.product-notice-inside p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555555;
+    /*background-color: #0ba65b;*/
+}
+
+.modify-category img {
+    position: relative;
+    float: left;
+    left: 6%;
+    top: 5%;
+    width: 180px;
+    height: 180px;
+    /*border: 0px;*/
+    border: solid whitesmoke 1px;
+    margin-left: 7%;
+    margin-bottom: 3%;
+    /*background-color: aquamarine;*/
+}
+
+.modify-category {
+
+    position: absolute;
+    left: 2%;
+    top: 14%;
+    overflow-x: hidden !important;
+    width: 95%;
+    height: 70%;
+    /*min-height: 70%;*/
+    /*max-height: 90%;*/
+    /*background-color:tan;*/
+}
+
+.modify-category input {
+    position: relative;
+    float: left;
+    left: 6%;
+    top: 2%;
+    width: 85%;
+    height: 8%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.modify-category-select {
+    position: relative;
+    float: left;
+    left: 6%;
+    top: 2%;
+    width: 91%;
+    height: 8%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.short-input{
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 5%;
+    width: 6.5%;
+    height: 60%;
+    padding-left: 5px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-right: 0.5%;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.add-category-btn {
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 77%;
+    width: 85%;
+    height: 10%;
+    border-radius: 0px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: #FFA59C;
+}
+
+.new-product-per-div-high {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 35%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+    /*text-align: justify;*/
+    /*text-align-last: justify;*/
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.new-product-per-div-high:hover {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 35.5%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.twenty-percent-high{
+    height: 20%;
+}
+
+.twenty-percent-high:hover{
+    height: 20.5%;
+}
+
+.new-category-btn {
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 58%;
+    width: 42.5%;
+    height: 10%;
+    border-radius: 0px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.thinner{
+    top: 74%;
+    height: 8%;
+}
+
+.modify-category-bottom-btn-pink {
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 74%;
+    width: 40%;
+    height: 8%;
+    border-radius: 0px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    border: none;
+    outline: none;
+    margin-right: 5%;
+    background-color: #FFA59C;
+}
+
+.modify-category-bottom-btn {
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 74%;
+    width: 40%;
+    height: 8%;
+    border-radius: 0px;
+    padding-left: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    border: none;
+    outline: none;
+    margin-right: 5%;
+}
+
+.pink-btn{
+    border:none;
+    outline: none;
+    color:white;
+    background-color: #FFA59C;
+}
+
+.pink-btn:hover{
+    background-color: #ff6e7f;
+}
+
+.pink-btn:active{
+    background-color: #ff8c9b;
+}
+.green-btn{
+    background-color: #15A68E;
+}
+
+.green-btn:hover{
+    background-color: #108ea6;
+}
+
+.green-btn:active{
+    background-color: #399ea6;
+}
+
+.new-salers-btn {
+    top: 73%;
+
+}
+
+.goods-price-btn {
+    top: 58%;
+}
+
+.five-to-top {
+    top: 5%;
+    margin-top: 5px;
+}
+
+.ten-to-down {
+    bottom: 10%;
+    margin-bottom: 10px;
+
+}
+
+.pink-btn-big{
+    width:96%;
+    border:none;
+    text-align: center;
+    color:white;
+    padding-left: 45%;
+    background-color: #FFA59C;
+}
+
+.pink-btn-big:hover{
+    width:96%;
+    border:none;
+    text-align: center;
+    color:white;
+    padding-left: 45%;
+    background-color: #ff6e7f;
+}
+
+.pink-btn-big:active{
+    width:96%;
+    border:none;
+    text-align: center;
+    color:white;
+    padding-left: 45%;
+    background-color: #ff8c9b;
+}
+
+.add-category-btn:hover {
+    background-color: #ff8696;
+}
+
+.add-category-btn:active {
+    background-color: #ff6e7f;
+}
+
+.price-per-input {
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 0;
+    width: 95%;
+    height: 7%;
+    margin-bottom: 5px;
+    padding-top: 0px;
+    /*background-color: teal;*/
+}
+
+.per-category{
+    position: relative;
+    float: left;
+    left: 2%;
+    width: 96%;
+    height: 14%;
+    border-bottom: solid gainsboro 1px;
+    font-weight: 300;
+}
+
+.per-category:hover{
+    background-color: gainsboro;
+    font-weight: 300;
+}
+
+.per-category-arrow{
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 3%;
+    width: 15%;
+    height: 100%;
+    font-weight: 300;
+}
+
+.per-category-arrow-up{
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 30%;
+    width: 70%;
+    margin-bottom: 10px;
+    font-weight: 300;
+    color: #212121;
+    /*height: 50%;*/
+    /*background-color: green;*/
+}
+
+.per-category-arrow-up:hover{
+    color: #FFA59C;
+}
+
+.per-category-arrow-up:active{
+    color: #dc8f87;
+}
+
+.per-category-arrow-up:focus{
+    color: #dc8f87;
+}
+
+.per-category img {
+    position: relative;
+    float: left;
+    top: 10%;
+    left: 10%;
+    width: 50px;
+    height: 50px;
+}
+
+.per-category h3{
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 15%;
+    width: 50%;
+    font-size: 18px;
+    font-weight: 300;
+    color: #2f2f2f;
+    /*background-color: #0ba65b;*/
+    margin-bottom: 0%;
+}
+
+.per-category > i{
+    position: relative;
+    float: right;
+    top: 46%;
+    right: 5%;
+}
+
+.per-saler {
+    position: relative;
+    float: left;
+    left: 2%;
+    width: 96%;
+    height: 25%;
+    border-bottom: solid gainsboro 1px;
+    /*background-color: goldenrod;*/
+    /*margin-bottom: 1%;*/
+}
+
+.per-saler:hover{
+    background-color: gainsboro;
+
+}
+
+.per-saler-selected{
+    background-color: gainsboro;
+
+}
+
+.per-saler img {
+    position: relative;
+    float: left;
+    top: 10%;
+    left: 0%;
+    width: 20%;
+    height: 80%;
+}
+
+.per-saler h2 {
+    position: relative;
+    float: left;
+    top: 8%;
+    left: 1%;
+    width: 4%;
+    font-size: 26px;
+    font-weight: 200;
+    color: #2f2f2f;
+    text-align: right;
+    /*background-color: #0ba65b;*/
+    margin-bottom: 0%;
+}
+
+.per-saler h3 {
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 5%;
+    width: 60%;
+    font-size: 18px;
+    font-weight: 300;
+    color: #2f2f2f;
+    /*background-color: #0ba65b;*/
+    margin-bottom: 0%;
+}
+
+.per-saler h4 {
+    position: relative;
+    float: left;
+    top: 0%;
+    margin-top: 1%;
+    margin-bottom: 0%;
+    left: 5%;
+    width: 50%;
+    font-size: 14px;
+    font-weight: 300;
+    color: #2f2f2f;
+    /*background-color: #0ba65b;*/
+}
+
+.per-order-state {
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 0%;
+    margin-right: 0%;
+    width: 9%;
+    height: 100%;
+    /*background-color: green;*/
+}
+
+.per-order-state p {
+    position: relative;
+    float: left;
+    top: 30%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    /*background-color: green;*/
+}
+
+.per-order-address {
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 1%;
+    margin-right: 0%;
+    width: 73%;
+    height: 40%;
+    background-color: gainsboro;
+}
+
+.per-order-address p {
+    position: relative;
+    float: left;
+    top: 15%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    /*background-color: green;*/
+}
+
+.per-order-address span {
+    position: relative;
+    float: left;
+    left: 2%;
+    margin-right: 2%;
+}
+
+.per-order-goods {
+    position: relative;
+    float: left;
+    top: 0%;
+    left: 1%;
+    margin-right: 0%;
+    width: 73%;
+    height: 58%;
+    border-top: solid gray 1px;
+    background-color: gainsboro;
+}
+
+.per-order-goods span {
+    position: relative;
+    float: left;
+    top: 4%;
+    left: 2%;
+    margin-right: 2%;
+    margin-bottom: 0.7%;
+    margin-top: 0.7%;
+    /*width: 100%;*/
+    /*text-align: center;*/
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+}
+
+.per-order-price {
+    position: relative;
+    float: right;
+    top: 0%;
+    right: 0%;
+    margin-right: 0%;
+    width: 17%;
+    height: 100%;
+    /*background-color: tomato;*/
+}
+
+.per-order-price p {
+    position: relative;
+    float: left;
+    top: -1%;
+    left: 0%;
+    width: 100%;
+    height: 23%;
+    padding-top: 3%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    /*background-color: green;*/
+}
+
+.per-order-price h2 {
+    position: relative;
+    float: left;
+    top: 20%;
+    left: 0%;
+    width: 100%;
+    height: 23%;
+    padding-top: 15%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 45%;
+    margin-top: 0px;
+    /*background-color: green;*/
+}
+
+.per-order-price h3 {
+    position: relative;
+    float: left;
+    top: -1%;
+    left: 0%;
+    width: 100%;
+    height: 23%;
+    padding-top: 15%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    /*background-color: green;*/
+}
+
+.per-order-price h4 {
+    position: relative;
+    float: left;
+    top: -1%;
+    left: 0%;
+    width: 100%;
+    height: 18%;
+    padding-top: 0%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    /*background-color: green;*/
+}
+
+.per-order-price h5 {
+    position: relative;
+    float: left;
+    top: 40%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    padding-top: 0%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    /*background-color: green;*/
+}
+
+.per-order-price input{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: 0%;
+    width: 85%;
+    height: 21%;
+    outline: none;
+    font-size: 11px;
+    margin-bottom: 0px;
+    /*border: solid gray 1px;*/
+    /*background-color: green;*/
+}
+
+.per-order-price select{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: 0%;
+    width: 85%;
+    height: 21%;
+    outline: none;
+    font-size: 11px;
+    margin-bottom: 0px;
+    /*border: solid gray 1px;*/
+    /*background-color: green;*/
+}
+
+.per-order-price button{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: -3%;
+    width: 85%;
+    height: 21%;
+    border: none;
+    outline: none;
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: 300;
+    background-color: #FFA59C;
+}
+
+.per-order-price button:hover{
+    background-color: #ffb5a8;
+}
+
+.per-order-price button:active{
+    background-color: #ffa59c;
+}
+
+.login-form {
+    position: relative;
+    float: left;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    /*background-color: tan;*/
+}
+
+.login-form a{
+    position: relative;
+    float: right;
+    margin-top: 10%;
+    right: 15%;
+    text-decoration: none;
+    color:black;
+    /*width: 80%;*/
+    /*background: greenyellow;*/
+}
+
+.url-div {
+    position: relative;
+    float: left;
+    top: 30%;
+    left: 10%;
+    width: 80%;
+    /*background-color: tan;*/
+}
+
+.login-form-input {
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 15%;
+    width: 70%;
+    height: 34px;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 8%;
+    outline: #FFA59C;
+}
+
+.wide-submit{
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 3%;
+    width: 96%;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 300;
+    color: whitesmoke;
+    /*margin-bottom: 8%;*/
+    background-color: #FFA59C;
+    outline: none;
+    border: none;
+}
+
+.wide-submit:hover{
+    background-color: rgba(255, 167, 155, 0.8);
+}
+
+.wide-submit:active{
+    background-color: rgba(255, 167, 155, 0.89);
+}
+
+
+.login-form-submit {
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 15%;
+    width: 71%;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 300;
+    color: whitesmoke;
+    /*margin-bottom: 8%;*/
+    background-color: #FFA59C;
+    outline: none;
+    border: none;
+}
+
+.login-form-submit:hover{
+     background-color: rgba(255, 167, 155, 0.8);
+}
+
+.login-form-submit:active{
+    background-color: rgba(255, 167, 155, 0.89);
+}
+
+.login-form-submit:focus{
+    background-color: rgba(255, 167, 155, 0.89);
+}
+
+.url-textarea {
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 15%;
+    width: 70%;
+    height: 120px;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 8%;
+    outline: #FFA59C;
+}
+
+.url-copy-btn {
+    position: relative;
+    float: left;
+    top: 5%;
+    left: 15%;
+    width: 71%;
+    height: 100px;
+    font-size: 16px;
+    font-weight: 300;
+    color: whitesmoke;
+    /*margin-bottom: 8%;*/
+    background-color: #FFA59C;
+    outline: none;
+    border: none;
+}
+
+.url-copy-btn:hover{
+    background-color: rgba(255, 167, 155, 0.8);
+}
+
+.url-copy-btn:active{
+    background-color: rgba(255, 167, 155, 0.89);
+}
+
+.url-copy-btn:focus{
+    background-color: rgba(255, 167, 155, 0.89);
+}
+
+
+.index-management-input{
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 8%;
+    width: 30%;
+    height: 14%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-bottom: 10px;
+    /*background-color: #0ba65b;*/
+}
+
+.index-management-img{
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 5%;
+    width: 100px;
+    height: 100px;
+    /*border: 0px;*/
+    border: solid whitesmoke 1px;
+    margin-left: 7%;
+    margin-bottom: 3%;
+    /*background-color: aquamarine;*/
+}
+
+.index-sale-management-img{
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 20%;
+    width: 80px;
+    height: 80px;
+    /*border: 0px;*/
+    border: solid whitesmoke 1px;
+    /*margin-left: 7%;*/
+    margin-bottom: 3%;
+    /*background-color: aquamarine;*/
+}
+
+
+.index-management-select {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 8%;
+    width: 28%;
+    height:10%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 3%;
+    color: #555555;
+    outline: none;
+    /*background-color: green;*/
+}
+
+.index-management-per-div {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 95%;
+    height: 38%;
+    padding: 5px;
+    margin-bottom: 0.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.index-management-per-div:hover {
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    width: 97%;
+    height: 40%;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.index-management-per-div h4{
+    position: relative;
+    float: left;
+    left: 5%;
+    margin-top: 5%;
+    font-size: 20px;
+    /*background-color: greenyellow;*/
+
+}
+
+.index-goods-img{
+    position: relative;
+    float: left;
+    left: 0%;
+    top: 5%;
+    width: 80px;
+    height: 80px;
+    /*border: 0px;*/
+    border: solid whitesmoke 1px;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    /*background-color: aquamarine;*/
+}
+
+.index-goods-p{
+    position: relative;
+    float: right;
+    right: 3%;
+    top: 12%;
+    width: 60%;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    /*border: 0px;*/
+    /*background-color: aquamarine;*/
+}
+
+.index-per-price{
+    position: relative;
+    float: left;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    background-color: teal;
+}
+
+.index-goods-price-p{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 2%;
+    width: 20%;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    /*border: 0px;*/
+    /*background-color: aquamarine;*/
+}
+
+.index-goods-price-input{
+    position: relative;
+    float: left;
+    left: 10%;
+    top: 12%;
+    width: 60%;
+    height: 27px;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    outline: none;
+    border: solid gainsboro 1px;
+    /*background-color: tan;*/
+}
+
+.index-goods-price-confirm{
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 0%;
+    width: 84%;
+    height: 34px;
+    font-weight: 300;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    background-color: #FFA59C;
+    /*background-color: tan;*/
+}
+
+.index-goods-price-confirm:hover {
+    background-color: #ff8696;
+}
+
+.index-goods-price-confirm:active {
+    background-color: #ff6e7f;
+}
+
+.index-goods-list-select {
+    position: relative;
+    float: left;
+    left: 8%;
+    top: 4%;
+    width: 40%;
+    height:6%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 5%;
+    color: #555555;
+    outline: none;
+    /*background-color: green;*/
+}
+
+.goods-list-head{
+    position: relative;
+    float: right;
+    right: 14%;
+    top: 1%;
+    width: 35%;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    /*background-color: grey;*/
+
+}
+
+.big-num{
+    font-size: 30px;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.goods-list-div{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 2%;
+    width: 94%;
+    height: 80%;
+    overflow-x: auto;
+    /*background-color: green;*/
+}
+
+.goods-list-per-good{
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 3%;
+    margin-bottom: 1%;
+    width: 96%;
+    height: 16%;
+    background-color: white;
+}
+
+.goods-list-per-good:hover{
+    background-color: #ebebeb;
+
+}
+
+.goods-list-per-good img{
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 5%;
+    height: 56px;
+    width: 56px;
+}
+
+.goods-list-per-good h3{
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 10%;
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 5%;
+}
+
+.goods-list-per-good h4{
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 8%;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 5%;
+}
+
+.goods-list-per-good h5{
+    position: relative;
+    float: left;
+    left: 2%;
+    top: 8%;
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 5%;
+}
+
+.goods-list-per-good button{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: 25%;
+    height: 50%;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.fa-saler-trash:before{
+    content: "\f1f8";
+}
+
+.fa-saler-trash {
+    display: inline-block;
+    font: normal normal normal 22px FontAwesome;
+    /*font-size: inherit;*/
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+    position: relative;
+    float: right;
+    right: 6%;
+    top: 0%;
+    color: #171717;
+}
+
+.fa-saler-trash:hover{
+    color: #FFA59C;
+}
+
+.fa-saler-trash:active{
+    color: #ff6e7f;
+}
+
+.modify-price {
+
+    position: absolute;
+    left: 2%;
+    top: 20%;
+    overflow-x: hidden !important;
+    width: 95%;
+    height: 66%;
+    /*min-height: 70%;*/
+    /*max-height: 90%;*/
+    /*background-color:tan;*/
+}
+
+.per-price{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 13%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    /*background-color: green;*/
+}
+
+.per-price p{
+    position: absolute;
+    left: 0%;
+    top: 0;
+    margin-top: 0%;
+    width: 40%;
+    height: 60%;
+    padding-top: 5%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    /*background-color: teal;*/
+}
+
+.per-price input {
+    position: relative;
+    float: right;
+    right: 6%;
+    top: 15%;
+    width: 45%;
+    height: 70%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.sale-per-price{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 13%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    /*background-color: green;*/
+}
+
+.sale-per-price-p{
+    position: absolute;
+    left: 0%;
+    top: 0;
+    margin-top: 0%;
+    width: 40%;
+    height: 60%;
+    padding-top: 5%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    /*background-color: darkgray;*/
+}
+
+.sale-per-price-input {
+    position: relative;
+    float: right;
+    right: 0%;
+    top: 15%;
+    width: 20%;
+    height: 70%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-left: 0.5%;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.sale-per-price-checkbox{
+    position: relative;
+    float: right;
+    right: 0%;
+    top: 15%;
+    width: 5%;
+    height: 70%;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-left: 2%;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.sale-per-category-input{
+    position: relative;
+    left: 1%;
+    top: 15%;
+    margin-top: 0%;
+    width: 10%;
+    height: 70%;
+    padding-left: 1px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 300;
+    color: #555555;
+    outline: none;
+    margin-left: 0.5%;
+    margin-bottom: 5px;
+    /*background-color: darkgray;*/
+}
+
+.delete-btn-div {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 23%;
+    height: 7.5%;
+    margin-bottom: 0.6%;
+    margin-top: 1.6%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.delete-btn-div:hover {
+
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.delete-btn-div:focus {
+
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.delete-btn-div:active {
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.modify-btn-div {
+    position: relative;
+    float: right;
+    right: 0%;
+    top: 5%;
+    width: 72%;
+    height: 7.5%;
+    margin-bottom: 0.6%;
+    margin-top: 1.6%;
+    /*border-radius: 14px;*/
+    /*background-color: whitesmoke;*/
+
+
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.modify-btn-div:hover {
+
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.modify-btn-div:focus {
+
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.modify-btn-div:active {
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+
+.delete-btn-p{
+    position: relative;
+    float: left;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555555;
+    /*background-color: green;*/
+    /*margin-right: 15%;*/
+}
+
+.ifSale{
+    position: relative;
+    float: left;
+    left: 53%;
+    top: 3%;
+    width: 20%;
+    height: 60%;
+    background-color: tan;
+}
+
+.ifSale-input{
+    position: relative;
+    float: left;
+    left: 3.5%;
+    top: 20%;
+    /*width: 40px;*/
+    /*height:40px;*/
+    transform: scale(1.5,1.5);
+    /*background-color: green;*/
+}
+
+.ifSale p{
+    position: relative;
+    float: left;
+    left: 0px;
+    top: 0;
+    margin-left: 3px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.final-submit-goods{
+    position: relative;
+    float: right;
+    right: 8%;
+    top: 80%;
+    width: 14%;
+    height: 12%;
+}
+
+.category-left{
+    position: fixed;
+    float: left;
+    left: 5%;
+    top: 18%;
+    width: 31.8%;
+    height: 64%;
+    overflow-x: hidden !important;
+    margin-top: 3%;
+    background-color: #f5f5f5;
+}
+
+.category-right{
+    position: fixed;
+    float: right;
+    right: 30%;
+    top: 18%;
+    width: 31.8%;
+    height: 64%;
+    margin-top: 3%;
+    overflow-x: hidden !important;
+    background-color: #f5f5f5;
+}
+
+.add-category-btn-left{
+    position: fixed;
+    float: left;
+    left: 5%;
+    top: 84%;
+    width: 31.8%;
+    height: 8%;
+    margin-top: 3%;
+    overflow-x: hidden !important;
+    background-color: #f5f5f5;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-left:hover{
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-left:active{
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-left p{
+    position: relative;
+    float: left;
+    left:0;
+    top: 0%;
+    padding-top: 5%;
+    margin: 0px;
+    width: 100%;
+    height: 60%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    /*background-color: teal;*/
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-left p:hover{
+    top: -10%;
+    font-size: 22px;
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-right p{
+    position: relative;
+    float: left;
+    left:0;
+    top: 0%;
+    padding-top: 5%;
+    margin: 0px;
+    width: 100%;
+    height: 60%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    /*background-color: teal;*/
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-right p:hover{
+    top: -10%;
+    font-size: 22px;
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-right{
+    position: fixed;
+    float: right;
+    right: 30%;
+    top: 84%;
+    width: 31.8%;
+    height: 8%;
+    margin-top: 3%;
+    overflow-x: hidden !important;
+    background-color: #f5f5f5;
+}
+
+.add-category-btn-right:hover{
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.add-category-btn-right:active{
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.suit-index-management {
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 20%;
+    width: 85%;
+    height: 40%;
+    padding: 5px;
+    margin-bottom: 3%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+    /*background-color: green;*/
+
+}
+
+.suit-index-management p{
+    position: relative;
+    float: left;
+    left: 3%;
+    font-size: 20px;
+    height: 20px;
+    font-weight: 300;
+}
+
+.suit-index-management img{
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 5%;
+    height: 80px;
+    width: 80px;
+}
+
+.suit-index-management h1{
+    position: relative;
+    float: left;
+    width: 15%;
+    left: 8%;
+    top: 24%;
+    font-size: 20px;
+    height: 20px;
+    font-weight: 300;
+    margin-left: 5%;
+    /*background-color: tan;*/
+}
+
+.suit-index-management h3{
+    position: relative;
+    float: left;
+    left: 1%;
+    top: 40%;
+    width:20%;
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 5%;
+    margin-top: 5%;
+
+    /*background-color: tan;*/
+}
+
+
+.suit-index-management h4{
+    position: relative;
+    float: left;
+    left: 1%;
+    top: 40%;
+    width:20%;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 2%;
+    /*background-color: teal;*/
+}
+
+.suit-index-management button{
+    position: relative;
+    float: right;
+    right: 1%;
+    width: 16%;
+    height: 35px;
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 2%;
+    margin-top: 20px;
+    /*background-color: teal;*/
+}
+
+.suit-index-management h2{
+    position: relative;
+    float: right;
+    right: 10%;
+    top: 0%;
+    width: 10%;
+    font-size: 28px;
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 0%;
+    font-weight: 300;
+    /*background-color: teal;*/
+}
+
+.per-category-div {
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 5%;
+    width: 90%;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 3%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+    /*background-color: green;*/
+    transition: 0.2s;
+    -moz-transition: 0.2s; /* Firefox 4 */
+    -webkit-transition: 0.2s; /* Safari and Chrome */
+    -o-transition: 0.2s; /* Opera */
+}
+
+.per-category-div:hover {
+    position: relative;
+    float: left;
+    left: 2.5%;
+    top: 4.5%;
+    width: 92%;
+    height: 42px;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 12px 3px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 12px 3px #555555;
+    -o-box-shadow: 0px 0px 12px 3px #555555;
+    box-shadow: 0px 0px 12px 3px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.per-category-div:focus {
+    position: relative;
+    float: left;
+    left: 2.5%;
+    top: 4.5%;
+    width: 92%;
+    height: 42px;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.per-category-div:active {
+    position: relative;
+    float: left;
+    left: 2.5%;
+    top: 4.5%;
+    width: 92%;
+    height: 42px;
+    padding: 5px;
+    margin-bottom: 0.5%;
+    /*border-radius: 14px;*/
+    background-color: whitesmoke;
+
+    -moz-box-shadow: 0px 0px 15px 5px #555555; /* 老的 Firefox */
+    -webkit-box-shadow: 0px 0px 15px 5px #555555;
+    -o-box-shadow: 0px 0px 15px 5px #555555;
+    box-shadow: 0px 0px 15px 5px #555555;
+
+    transition: 0.1s;
+    -moz-transition: 0.1s; /* Firefox 4 */
+    -webkit-transition: 0.1s; /* Safari and Chrome */
+    -o-transition: 0.1s; /* Opera */
+}
+
+.per-category-div img{
+    position: relative;
+    float: left;
+    left: 5%;
+    top: 5%;
+    height: 40px;
+    width: 40px;
+}
+
+.per-category-div h3{
+    position: relative;
+    float: left;
+    left: 12%;
+    top: -20%;
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 5%;
+    /*background-color: tan;*/
+}
+
+
+.per-category-div h4{
+    position: relative;
+    float: right;
+    right: 1%;
+    top: 10%;
+    width: 10%;
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 0%;
+    /*background-color: teal;*/
+}
+
+.per-category-div h2{
+    position: relative;
+    float: right;
+    right: 1%;
+    top: -40%;
+    width: 10%;
+    font-size: 30px;
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 3%;
+    font-weight: 300;
+    /*background-color: green;*/
+}
+
+.category-notice{
+    position: fixed;
+    float: right;
+    right: 2%;
+    top: 7%;
+    width: 25%;
+    height: 85%;
+    margin-top: 3%;
+    overflow-x: hidden !important;
+    background-color: #f5f5f5;
+}
+
+.category-confirm{
+    position: fixed;
+    float: right;
+    right: 2%;
+    top: 84%;
+    width: 25%;
+    height: 8%;
+    margin-top: 3%;
+    overflow-x: hidden !important;
+    background-color: #f5f5f5;
+}
+
+.all-category {
+    position: absolute;
+    right: 4%;
+    top: 10%;
+    overflow-x: hidden !important;
+    width: 92%;
+    height: 80%;
+    /*min-height: 70%;*/
+    /*max-height: 90%;*/
+    /*background-color:tan;*/
+}
+
+.newCategory-input {
+    position: relative;
+    float: left;
+    left: 7%;
+    top: 0%;
+    width: 25%;
+    height: 97%;
+}
+
+.per-line{
+    position: relative;
+    float: left;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    /*background-color: greenyellow;*/
+}
+
+.per-line h3{
+    position: relative;
+    float: left;
+    left: 30px;
+    font-size:17px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.per-line p{
+    position: relative;
+    float: left;
+    left: 40px;
+    font-size:19px;
+    font-weight: 400;
+    line-height: 20px;
+
+}
+
+.per-input-div{
+    position: relative;
+    float: left;
+    left:0;
+    width: 19%;
+    height: 20px;
+    /*background-color: greenyellow;*/
+    margin-bottom: 1%;
+}
+
+.per-input-div input{
+    position: relative;
+    float: left;
+    left:5%;
+    top:10%;
+    height: 90%;
+    width:50%;
+}
+
+.per-input-div button{
+    border-radius: 20px;
+    border: none;
+    position: relative;
+    float: left;
+    left:10%;
+    top:10%;
+    height: 20px;
+    width:20px;
+    text-align: center;
+}
+
+.addRoom-btn{
+    position: relative;
+    float: left;
+    left:5%;
+    top:20%;
+    height: 100%;
+    width:55%;
+    font-size:13px;
+    text-align:center;
+    line-height: 20px;
+    background-color: #FFA59C;
+}
+
+.addRoom-btn:hover{
+    color:white;
+}
+
+.addRoom-btn:active{
+    color: rgb(254, 215, 211);
+}
+

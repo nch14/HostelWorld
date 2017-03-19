@@ -1,4 +1,4 @@
-package cn.chenhaonee.hostelWorld.model;
+package cn.chenhaonee.hostelWorld.model.Member;
 
 /**
  * Created by nichenhao on 2017/3/13.

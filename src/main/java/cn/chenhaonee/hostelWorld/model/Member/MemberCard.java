@@ -1,5 +1,6 @@
-package cn.chenhaonee.hostelWorld.model;
+package cn.chenhaonee.hostelWorld.model.Member;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,17 +14,19 @@ import java.util.List;
 public class MemberCard {
     @Id
     private String id;
+    private double balance;
     private Double sumCost;
     private int currentMarks;
-    @OneToMany
+    @OneToMany(targetEntity = CardEventLog.class,cascade = CascadeType.ALL)
     private List<CardEventLog> cardEventLogList;
 
     public MemberCard() {
     }
 
-    public MemberCard(String id) {
+    public MemberCard(String id,double balance) {
         this.id = id;
         sumCost = 0.0;
+        this.balance=balance;
         currentMarks =0;
         cardEventLogList = new ArrayList<>();
     }
@@ -34,6 +37,14 @@ public class MemberCard {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public Double getSumCost() {
@@ -52,11 +63,15 @@ public class MemberCard {
         this.currentMarks = currentMarks;
     }
 
-   /* public List<CardEventLog> getCardEventLogList() {
+    public List<CardEventLog> getCardEventLogList() {
         return cardEventLogList;
     }
 
     public void setCardEventLogList(List<CardEventLog> cardEventLogList) {
         this.cardEventLogList = cardEventLogList;
-    }*/
+    }
+
+    public void addCardEvent(CardEventLog eventLog){
+        cardEventLogList.add(eventLog);
+    }
 }

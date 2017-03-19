@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+    <script th:src="@{../scripts/customer.js}"></script>
+
+    <title>房间查看</title>
+</head>
+<body>
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button"></button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toIndex()">房间查看</button>
+            <button class="button-bar-button" onclick="toReservation()">我的预定</button>
+            <button class="button-bar-button" onclick="toHistory()">历史统计</button>
+            <button class="button-bar-button" onclick="toPersonal()">个人信息</button>
+
+        </div>
+    </div>
+
+    <div class="goods-detail ">
+
+        <div class="sale-basic-div table-with-pic-div">
+            <p>选择分店</p>
+            <select id="branchSelect">
+                <option>鼓楼分店</option>
+            </select>
+            <p>开始日期</p>
+            <input type="date"/>
+            <p>结束日期</p>
+            <input type="date"/>
+            <div class="goods-list-div" id="goodsList">
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                    <button class="pink-btn">预定房间</button>
+                </div>
+
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                </div>
+
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                </div>
+
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                </div>
+
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                </div>
+
+                <div class="goods-list-per-good">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房</h3>
+                    <h5>￥222.00</h5>
+                    <h4>预定情况：16/20</h4>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        initRooms();
+    });
+
+    function initRooms() {
+        var branchSelect = document.getElementById("branchSelect");
+        $.ajax({
+            url:"/inn/list",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function(data) {
+                $.each(data.data, function(idx, item) {
+                    alert(item.id);
+                    alert(item.name);
+
+                    var perOption = document.createElement("option");
+                    perOption.value=item.id;
+                    perOption.innerHTML=item.name;
+                    branchSelect.appendChild(perOption);
+                });
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,5 +1,7 @@
 package cn.chenhaonee.hostelWorld.model;
 
+import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
@@ -8,14 +10,15 @@ import java.util.Optional;
  * Created by nichenhao on 2017/3/13.
  */
 @Entity
-public class User {
+public abstract class User {
     @Id
     private String username;
     private String passwordHash;
+    @OneToOne
+    private VisaCard visaCard;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToOne(cascade = CascadeType.ALL)
-    private MemberCard memberCard;
+
 
     public String getUsername() {
         return username;
@@ -41,11 +44,20 @@ public class User {
         this.role = role;
     }
 
-    public MemberCard getMemberCard() {
-        return memberCard;
+    public User() {
     }
 
-    public void setMemberCard(MemberCard memberCard) {
-        this.memberCard = memberCard;
+    public User(String username, String passwordHash, VisaCard visaCard) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.visaCard = visaCard;
+    }
+
+    public VisaCard getVisaCard() {
+        return visaCard;
+    }
+
+    public void setVisaCard(VisaCard visaCard) {
+        this.visaCard = visaCard;
     }
 }

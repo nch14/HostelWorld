@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.dao;
 
-import cn.chenhaonee.hostelWorld.model.MemberCard;
+import cn.chenhaonee.hostelWorld.model.Member.MemberCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

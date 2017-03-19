@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+    <script th:src="@{../scripts/hostel.js}"></script>
+    <title>注册</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+            <p class="login-shop-head">请选择您想要成为的身份</p>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-basic">
+        <!--<div class="new-goods-left">-->
+        <!--<iframe name="myiframe" style="display:none;"></iframe>-->
+        <form id="newSalerForm" class="new-goods-center" >
+            <div class="new-product-per-div-high twenty-percent-high no-padding-element" onclick="toMember()">
+                <p class="text-center text-big-middle-position">尊贵会员</p>
+            </div>
+            <div class="new-product-per-div-high twenty-percent-high no-padding-element" onclick="toManager()">
+                <p class="text-center text-big-middle-position">客栈经理</p>
+            </div>
+            <!--<input type="submit" class="product-notice-div commit-newSaler-div text-big" onclick="checkIfNull" onmousemove="toPic()" onmouseout="toText()" value="确认提交">-->
+        </form>
+        <!--</div>-->
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function toMember() {
+        window.location.href="/join/joinAsMember";
+    }
+
+
+    function toManager() {
+        window.location.href="/member/join";
+    }
+
+</script>
+</body>
+</html>

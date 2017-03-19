@@ -1,7 +1,8 @@
-package cn.chenhaonee.hostelWorld.model;
+package cn.chenhaonee.hostelWorld.model.Member;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Created by carlos on 2017/3/14.
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 public class VisaCard {
     @Id
     private String cardNum;
+    private String cvv;
+    private String validDate;
     private double balance;
 
     public VisaCard(String cardNum, double balance) {
@@ -19,6 +22,22 @@ public class VisaCard {
 
     public VisaCard() {
 
+    }
+
+    public String getValidDate() {
+        return validDate;
+    }
+
+    public void setValidDate(String validDate) {
+        this.validDate = validDate;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 
     public String getCardNum() {

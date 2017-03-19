@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class WebAuthConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
-    UserDetailsService myUserService(){
+    UserDetailsService myUserService() {
         return new MyUserService();
     }
 
@@ -25,27 +25,28 @@ public class WebAuthConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
-                .antMatchers("/resources/css/**").permitAll()
+                .antMatchers("/resources/styles/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .permitAll()
                 .and()
                 .rememberMe()
-                    .tokenValiditySeconds(1209600)
-                    .key("myKey")
+                .tokenValiditySeconds(1209600)
+                .key("myKey")
                 .and()
                 .logout()
-                    .logoutUrl("/logout")
-                    .permitAll();
+                .logoutUrl("/logout")
+                .permitAll();
 
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-               .userDetailsService(myUserService())
+                .userDetailsService(myUserService())
                 /*.passwordEncoder(new BCryptPasswordEncoder())*/;
     }
 }

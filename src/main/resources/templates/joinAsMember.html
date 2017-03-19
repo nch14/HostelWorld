@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+		<link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+		<script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+		<script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+
+		<title>绑定银行卡</title>
+	</head>
+	<body>
+		<div class="boss-allEelments">
+			<!--头部bar开始-->
+			<div class="boss-top-bar">
+				<p class="login-shop-head">绑定银行卡,仅仅充值1000元以上，您即可成为我们的尊贵会员！</p>
+			</div>
+			<!--头部bar结束-->
+
+			<div class="login-form">
+				<form th:action="@{/member/join}" method="post">
+					<input type="text" class="login-form-input" placeholder="银行卡号" name="cardNum" tabindex="1"/>
+					<input type="text" class="login-form-input" placeholder="有效期" name="validDate" tabindex="2"/>
+					<input type="text" class="login-form-input" placeholder="CVV码" name="cvv" tabindex="3"/>
+					<input type="text" class="login-form-input" placeholder="充值金额" name="money" tabindex="4"/>
+					<input type="submit" class="login-form-submit" value="确定" tabindex="5"/>
+				</form>
+			</div>
+		</div>
+
+
+	<script type="text/javascript">
+
+	</script>
+	</body>
+
+</html>
