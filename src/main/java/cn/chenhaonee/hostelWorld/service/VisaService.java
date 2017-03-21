@@ -19,19 +19,23 @@ public class VisaService {
         VisaCard visaCard = cardRepository.findOne(cardNum);
         if (visaCard == null)
             throw new NoSuchVisaCardException();
-        if (visaCard.getValidDate().equals(validDate)&&visaCard.getCvv().equals(cvv))
+        if (visaCard.getValidDate().equals(validDate) && visaCard.getCvv().equals(cvv))
             return visaCard;
         else
             throw new VisaCardCheckFailureException();
     }
 
-    public boolean consumes(String cardNum,double money){
+    public VisaCard getVisaCard(String cardNum) {
+        return cardRepository.findOne(cardNum);
+    }
+
+    public boolean consumes(String cardNum, double money) {
         VisaCard visaCard = cardRepository.findOne(cardNum);
         double balance = visaCard.getBalance();
-        if (balance<money)
+        if (balance < money)
             return false;
         else {
-            visaCard.setBalance(balance-money);
+            visaCard.setBalance(balance - money);
             cardRepository.save(visaCard);
             return true;
         }

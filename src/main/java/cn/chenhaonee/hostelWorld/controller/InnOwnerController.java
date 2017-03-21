@@ -1,43 +1,133 @@
 package cn.chenhaonee.hostelWorld.controller;
 
+import cn.chenhaonee.hostelWorld.model.Inn.Room;
+import cn.chenhaonee.hostelWorld.service.InnOwnerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by nichenhao on 2017/3/19.
  */
 @Controller
-@RequestMapping(value = "/inn")
+@RequestMapping(value = "/innOwner")
 public class InnOwnerController {
+
+    @Autowired
+    private InnOwnerService innOwnerService;
 
     /**
      * 客栈加盟申请页面
+     *
      * @return
      */
     @RequestMapping(value = "/applyPage")
-    public String applyPageForAInn(){
+    public String applyPageForAInn() {
         return "";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/applyConfirm", method = RequestMethod.GET)
+    public boolean applyRequestForAInn(@RequestParam(value = "hostelName") String hostelName,
+                                       @RequestParam(value = "hostelTel") String hostelTel,
+                                       @RequestParam(value = "hostelAdd") String hostelAdd,
+                                       @RequestParam(value = "hostelDesc") String hostelDesc,
+                                       @RequestParam(value = "hostelEmail") String hostelEmail,
+                                       @RequestParam(value = "wideBed") String wideBed,
+                                       @RequestParam(value = "doubleBed") String doubleBed,
+                                       @RequestParam(value = "seaBed") String seaBed,
+                                       @RequestParam(value = "hostelCard") String hostelCard,
+                                       HttpSession session) {
+        String passwordHash = (String) session.getAttribute("passwordHash");
+        String username = (String) session.getAttribute("username");
+        innOwnerService.addNewOwner(username, passwordHash, hostelName, hostelTel, hostelAdd, hostelDesc, hostelEmail,
+                wideBed, doubleBed, seaBed, hostelCard);
+        session.removeAttribute("passwordHash");
+        return true;
+    }
 
-    @RequestMapping(value = "/applyConfirm",method = RequestMethod.POST)
-    public String applyRequestForAInn(){
-        return "";
+    @RequestMapping(value = "/home")
+    public String innHomePage() {
+        return "/hostelToday";
     }
 
     /**
      * 发布计划页面
+     *
      * @return
      */
     @RequestMapping(value = "/makePlanPage")
-    public String makePlanPage(){
+    public String makePlanPage() {
         return "";
     }
 
-    @RequestMapping(value = "/makePlanConfirm",method = RequestMethod.POST)
-    public String makePlanRequest(){
+    @RequestMapping(value = "/makePlanConfirm", method = RequestMethod.POST)
+    public String makePlanRequest() {
         return "";
     }
 
+    @RequestMapping(value = "/checkIn/1")
+    public void checkInWithBooking(@RequestParam(value = "no") String no,
+                                   @RequestParam(value = "name") List<String> name,
+                                   @RequestParam(value = "payInCard") boolean payInCard) {
+        innOwnerService.checkIn(no, name, payInCard);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/checkIn/2")
+    public String checkInWithoutBooking(@RequestParam(value = "fromDate") String fromDate,
+                                        @RequestParam(value = "toDate") String toDate,
+                                        @RequestParam(value = "roomName") String roomName,
+                                        @RequestParam(value = "memberUsername", required = false) String memberUsername,
+                                        @RequestParam(value = "payInCard", required = false) boolean payInCard,
+                                        @RequestParam(value = "name") List<String> name, HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        Long roomId = innOwnerService.findRoomId(username, roomName);
+        String inn = innOwnerService.findInnId(username);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date from = null;
+        Date to = null;
+        try {
+            from = sdf.parse(fromDate);
+            to = sdf.parse(toDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String orderId = innOwnerService.checkIn(memberUsername, inn, roomId, from, to, name, payInCard);
+        return orderId;
+    }
+
+    @RequestMapping(value = "/checkOut")
+    public void checkOut(@RequestParam(value = "no") String no) {
+        innOwnerService.checkOut(no);
+    }
+
+    /**
+     * 获取可入住的房型
+     * @param type
+     * @param fromDate
+     * @param toDate
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/roomName")
+    public List<String> getRoomName(@RequestParam(value = "type") String type,
+                                    @RequestParam(value = "fromDate") String fromDate,
+                                    @RequestParam(value = "toDate") String toDate,
+                                    HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        return innOwnerService.findRooms(username, type,fromDate,toDate);
+    }
 }

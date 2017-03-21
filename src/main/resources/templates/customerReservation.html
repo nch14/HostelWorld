@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+    <script th:src="@{../scripts/customer.js}"></script>
+    <title>我的预定</title>
+</head>
+
+
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button"></button>
+            <button class="button-bar-button" onclick="toIndex()">房间查看</button>
+            <button class="button-bar-button  button-bar-button-selected" onclick="toReservation()">我的预定</button>
+            <button class="button-bar-button" onclick="toHistory()">历史统计</button>
+            <button class="button-bar-button" onclick="toPersonal()">个人信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="full-basic">
+        <div class="new-goods-center" id="allDivs">
+            <!--<div class="index-management-per-div" id="dc1" th:each="orders: ${list}">-->
+            <!--<p class="add-goods-head" th:text="'${orders.checkIn}'+'~'+'${orders.checkOut}'"></p>-->
+            <!--<div class="suit-index-management">-->
+            <!--<p th:text="${orders.state}">等待入住</p>-->
+            <!--<img src="img/111.jpg">-->
+            <!--<h3 th:text="'${orders.inn}'+'${orders.roomType}'+'${orders.roomName}'">鼓楼店 豪华大床房 707</h3>-->
+            <!--<button class="pink-btn">取消预订</button>-->
+            <!--<h2 class="big-num" th:text="'￥'+'${orders.cost}'">￥222.00</h2>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        initPage();
+    });
+
+
+    function initPage() {
+
+        var allDivs = document.getElementById("allDivs");
+
+        $.ajax({
+            url: "/member/myOrderData",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                $.each(data, function (idx, item) {
+
+                    var perOrder = document.createElement("div");
+                    perOrder.setAttribute("class", "index-management-per-div");
+                    var orderTime = document.createElement("p");
+                    orderTime.setAttribute("class", "add-goods-hea");
+                    var perOrderDetail = document.createElement("div");
+                    perOrderDetail.setAttribute("class", "suit-index-management");
+                    var perState = document.createElement("p");
+                    perState.innerHTML = item.state;
+                    var perImage = document.createElement("img");
+                    perImage.src = "img/111.jpg";
+                    var perName = document.createElement("h3");
+                    perName.innerHTML = item.room.roomType+" "+item.room.roomName;
+                    var perPrice = document.createElement("h2");
+                    perPrice.setAttribute("class", "big-num");
+                    perPrice.innerHTML = "￥"+item.cost;
+                    perOrderDetail.appendChild(perState);
+                    perOrderDetail.appendChild(perImage);
+                    perOrderDetail.appendChild(perName);
+                    if(item.state=="待入住"){
+                        var perBtn = document.createElement("button");
+                        perBtn.setAttribute("class", "pink-btn");
+                        perBtn.innerHTML = "取消预订";
+                        perOrderDetail.appendChild(perBtn);
+                    }
+                    perOrderDetail.appendChild(perPrice);
+
+                    allDivs.appendChild(perOrderDetail);
+                });
+            }
+        });
+
+
+
+
+
+    }
+</script>
+
+</body>
+</html>

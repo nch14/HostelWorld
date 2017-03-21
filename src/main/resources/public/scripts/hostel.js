@@ -131,5 +131,12 @@ function closeThis(thisDiv) {
     //npdNum--;
 }
 
+function toMember() {
+    window.location.href="newMember.html";
+}
 
+
+function toManager() {
+    window.location.href="joinAsInn.html";
+}
 

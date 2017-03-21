@@ -71,11 +71,11 @@ function toIndex(){
 }
 
 function toReservation(){
-    window.location.href="customerReservation.html";
+    window.location.href="/member/myOrderPage";
 }
 
 function toHistory(){
-    window.location.href="history.html";
+    window.location.href="/customerHistory.html";
 }
 
 function toPersonal(){

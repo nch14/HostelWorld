@@ -1,5 +1,7 @@
 package cn.chenhaonee.hostelWorld.model.Inn;
 
+import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
+import cn.chenhaonee.hostelWorld.model.Role;
 import cn.chenhaonee.hostelWorld.model.User;
 
 import javax.persistence.Entity;
@@ -12,9 +14,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class InnOwner extends User {
 
-    @OneToOne()
-    @JoinTable(name = "inn")
+    @OneToOne
     private Inn inn;
+
+    public InnOwner() {
+    }
+
+    public InnOwner(String username, String passwordHash, VisaCard visaCard, Inn inn) {
+        super(username, passwordHash, visaCard);
+        setRole(Role.Inn);
+        this.inn = inn;
+    }
 
     public Inn getInn() {
         return inn;

@@ -27,10 +27,10 @@ public class Application implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-    /*    Member member = new Member();
+        Member member = new Member();
         member.setUsername("nch14");
         member.setPasswordHash("nch2012");
         member.setRole(Role.Member);
-        memberRepository.save(member);*/
+        memberRepository.save(member);
     }
 }

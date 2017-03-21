@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by nichenhao on 2017/3/13.
@@ -24,8 +25,9 @@ public class WebAuthConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index").permitAll()
-                .antMatchers("/resources/styles/**").permitAll()
+                .antMatchers("/", "/index", "/join/**","/member/join","/innOwner/applyConfirm").permitAll()
+                .antMatchers("/resources/public/styles/**", "/resources/public/scripts/**").permitAll()
+                .antMatchers("/styles/**", "/scripts/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -47,6 +49,6 @@ public class WebAuthConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(myUserService())
-                /*.passwordEncoder(new BCryptPasswordEncoder())*/;
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 }

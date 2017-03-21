@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script type="text/javascript" src="scripts/jquery-form.js"></script>
+
+    <!--<script src="scripts/echarts.js"></script>-->
+    <script src="scripts/hostel.js"></script>
+    <!--<script src="scripts/goods.js"></script>-->
+    <title>办理入住</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button button-bar-button-selected" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button" onclick="toCheckout()">离店登记</button>
+            <button class="button-bar-button" onclick="toToday()">今日房情</button>
+            <button class="button-bar-button" onclick="toPlan()">酒店计划</button>
+            <button class="button-bar-button" onclick="toFinance()">财务信息</button>
+            <button class="button-bar-button" onclick="toInfo()">修改信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-basic">
+        <form class="new-goods-center" name="uploadGoodsForm" enctype="multipart/form-data">
+            <!--<form id="newGoodsForm" action="https://707.chenhaonee.cn:8443/v1/product/add" method="post" >-->
+
+            <div class="new-product-per-div">
+                <p class="new-product-per-p">是否预定</p>
+                <select class="new-product-per-input" name="categoryId" id="ifOrder" onchange="changeView(this)">
+                    <option value="1">已预订</option>
+                    <option value="2">未预定</option>
+                </select>
+            </div>
+
+            <div class="new-product-per-div" id="dateHolder" style="display: none">
+                <p class="new-product-per-div-p">开始日期</p>
+                <input type="date" class="new-product-per-div-date" id="startDate">
+                <p class="new-product-per-div-p">结束日期</p>
+                <input type="date" class="new-product-per-div-date" id="endDate">
+            </div>
+
+            <div class="new-product-per-div">
+                <p class="new-product-per-p">会员编号</p>
+                <input class="new-product-per-input" type="text" placeholder="会员编号（非会员不填写）" id="memberCardId"/>
+
+            </div>
+
+            <div class="new-product-per-div">
+                <p class="new-product-per-p">结算方式</p>
+                <select class="new-product-per-input" name="categoryId" id="countWay">
+                    <option value="true">会员卡</option>
+                    <option value="false">现金</option>
+                </select>
+            </div>
+
+            <div class="new-product-per-div" id="roomType" style="display: none">
+                <p class="new-product-per-p">房间种类</p>
+                <select class="new-product-per-input" name="categoryId" id="roomCategory">
+                    <option value="浴缸大床房">浴缸大床房</option>
+                    <option value="标准双床房">标准双床房</option>
+                    <option value="海景休闲房">海景休闲房</option>
+                </select>
+            </div>
+
+            <div class="new-product-per-div" id="roomNumDiv" style="display: none">
+                <p class="new-product-per-p">房间号</p>
+                <select class="new-product-per-input" name="categoryId" id="roomNum">
+
+                    <!--<option value="9">美容彩妆</option>-->
+
+                </select>
+            </div>
+            <div class="new-product-per-div no-padding-element" id="orderIdDiv">
+                <p class="new-product-per-p">订单编号</p>
+                <input class="new-product-per-input" type="text" id="orderId"/>
+            </div>
+            <!--<div class="input-pic-div">-->
+            <span id="addNewProperty">
+                <div class="new-product-per-div no-padding-element">
+                    <input class="new-product-per-input-left" id="name1" type="text" placeholder="客人姓名"/>
+                    <input class="new-product-per-input" id="id1" type="text" placeholder="身份证号"/>
+                    <!--<button class="add-goods-close-btn" onclick="closeThis(this)" id="c1">-->
+                    <!--X-->
+                    <!--</button>-->
+                </div>
+                 <div class="new-product-per-div no-padding-element">
+                    <input class="new-product-per-input-left" id="name2" type="text" placeholder="客人姓名"/>
+                    <input class="new-product-per-input" id="id2" type="text" placeholder="身份证号"/>
+                </div>
+                 <div class="new-product-per-div no-padding-element">
+                    <input class="new-product-per-input-left" id="name3" type="text" placeholder="客人姓名"/>
+                    <input class="new-product-per-input" id="id3" type="text" placeholder="身份证号"/>
+                </div>
+            </span>
+            <!--<div class="new-product-per-div no-padding-element">-->
+                <!--<p class="new-product-per-p">房费总计</p>-->
+                <!--<input class="new-product-per-input" type="text" readonly="readonly"/>-->
+            <!--</div>-->
+            <button class=" wide-submit" tabindex="3" onclick="submitOrder(this)">
+                确认登记
+            </button>
+
+            <!--</form>-->
+        </form>
+
+
+        <!--<div class="product-notice-div add-property-div" onmousemove="toPicPro()" onmouseout="toTextPro()"-->
+        <!--onclick="newProperty()">-->
+        <!--<p id="add-property-btn-text" class="sale-basic-head text-center-square-button text-small">-->
+        <!--新建房客-->
+        <!--</p>-->
+        <!--</div>-->
+
+        <!--<div class="product-notice-div commit-newGoods-div" onmousemove="toPic()" onmouseout="toText()"-->
+        <!--onclick="toNewGoods()">-->
+        <!--<p id="add-goods-btn-text" class="sale-basic-head text-center-small-button text-big">-->
+        <!--下一步-->
+        <!--</p>-->
+        <!--</div>-->
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        initSelect();
+    });
+
+
+    function initSelect() {
+        var roomNum = document.getElementById("roomNum");
+        $.ajax({
+            url: "/innOwner/roomName",
+            type: "GET",
+            dataType: 'JSON',
+            data: {
+              type:$('#roomCategory option:selected').val(),
+            },
+            async: false,
+            success: function (data) {
+                $.each(data, function (idx, item) {
+                    var perOption = document.createElement("option");
+                    perOption.innerHTML=item;
+                    perOption.value=item;
+                    roomNum.appendChild(perOption);
+                });
+            }
+        });
+    }
+
+    var ifOrder = true;
+    <!--获得订单总价-->
+    function submitOrder(btn) {
+//        调用获取总价的ajax   然后刷新  然后更改btn的值和onclick（）
+        var startDate = document.getElementById("startDate");
+        var endDate = document.getElementById("endDate");
+        var memberCardId = document.getElementById("memberCardId");
+        var countWay = document.getElementById("countWay");
+        var payment;
+        if (countWay.value == "true") {
+            payment = true;
+        } else {
+            payment = false;
+        }
+
+        var orderId = document.getElementById("orderId");
+        var customer = [];
+        for (var i = 1; i < 4; i++) {
+            var cusName = document.getElementById("name" + i);
+            var cusId = document.getElementById("id" + i);
+            var perCustomer = cusName.value + cusId.value;
+            customer.push(perCustomer);
+        }
+
+
+        if (ifOrder) {  //已预订
+            $.ajax({
+                url: "/innOwner/checkIn/1",
+                type: "GET",
+                dataType: 'JSON',
+                data: {
+                    no: orderId.value,
+                    name: customer,
+                    payInCard: payment
+
+                },
+                async: false,
+                success: function (data) {
+                    location.reload();
+                }
+            });
+
+        } else {  //未预定
+            $.ajax({
+                url: "/innOwner/checkIn/2",
+                type: "GET",
+                data: {
+                    fromDate:startDate.value,
+                    toDate:endDate.value,
+                    roomName:$('#roomNum option:selected').val(),
+                    memberUserName:memberCardId.value,
+                    payInCard:payment,
+                    name:customer
+                },
+                dataType: 'JSON',
+                async: false,
+                success: function (data) {
+                    alert("订单编号为 "+data);
+                    location.reload();
+                }
+            });
+        }
+
+
+    }
+
+
+    function changeView(btn) {
+        if (btn.value == "1") {
+            yesOrder();
+        } else {
+            noOrder();
+        }
+    }
+
+    var dateHolder = document.getElementById("dateHolder");
+    var roomType = document.getElementById("roomType");
+    var roomNumDiv = document.getElementById("roomNumDiv");
+
+
+    var orderIdDiv = document.getElementById("orderIdDiv");
+
+
+    function yesOrder() {
+        dateHolder.style.display = "none";
+        roomType.style.display = "none";
+        roomNumDiv.style.display = "none";
+        orderIdDiv.style.display = "";
+        ifOrder = true;
+
+    }
+
+    function noOrder() {
+        orderIdDiv.style.display = "none";
+        dateHolder.style.display = "";
+        roomType.style.display = "";
+        roomNumDiv.style.display = "";
+        ifOrder = false;
+
+    }
+
+</script>
+</body>
+</html>

@@ -11,15 +11,24 @@ import javax.persistence.Id;
 public class Room {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String roomName;
     private String roomType;
 
-    public long getId() {
+    public Room(String roomName, String roomType) {
+        this.roomName = roomName;
+        this.roomType = roomType;
+    }
+
+    public Room() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

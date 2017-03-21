@@ -66,6 +66,7 @@
     height: 88%;
     padding: 5px;
     margin-right: 2%;
+    overflow-x: hidden;
     /*border-radius: 14px;*/
     background-color: whitesmoke;
 
@@ -88,7 +89,7 @@
 .sale-basic-div p{
     position: relative;
     float: left;
-    left: 14%;
+    left: 5%;
     font-size: 16px;
     line-height: 26px;
     font-weight: 300;
@@ -99,7 +100,7 @@
     position: relative;
     float: left;
     top: 2%;
-    left: 16%;
+    left: 7%;
     width: 14%;
     height: 5%;
     margin-left: 10px;
@@ -110,9 +111,20 @@
     position: relative;
     float: left;
     top: 2%;
-    left: 16%;
+    left: 7%;
     width: 14%;
     height: 5%;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.sale-basic-div-btn{
+    position: relative;
+    float: left;
+    top: 2%;
+    left: 7%;
+    /*width: 14%;*/
+    /*height: 5%;*/
     margin-left: 10px;
     margin-right: 20px;
 }
@@ -915,7 +927,7 @@
     left: 3%;
     top: 0%;
     width: 80%;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     color: #555555;
     margin-bottom: 5px;
@@ -2556,7 +2568,7 @@
 }
 
 .big-num{
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 3%;
     margin-right: 3%;
 }
@@ -2567,6 +2579,18 @@
     left: 3%;
     top: 2%;
     width: 94%;
+    height: 80%;
+    overflow-x: auto;
+    /*background-color: green;*/
+}
+
+
+.goods-list-div-half{
+    position: relative;
+    float: left;
+    left: 3%;
+    top: 2%;
+    width: 45%;
     height: 80%;
     overflow-x: auto;
     /*background-color: green;*/
@@ -3182,8 +3206,8 @@
     float: left;
     left: 1%;
     top: 40%;
-    width:20%;
-    font-size: 18px;
+    width:40%;
+    font-size: 15px;
     font-weight: 300;
     margin-left: 5%;
     margin-top: 5%;
@@ -3223,7 +3247,7 @@
     right: 10%;
     top: 0%;
     width: 10%;
-    font-size: 28px;
+    font-size: 23px;
     text-align: center;
     margin-left: 0%;
     margin-right: 0%;
@@ -3441,9 +3465,9 @@
 .per-input-div{
     position: relative;
     float: left;
-    left:0;
-    width: 19%;
-    height: 20px;
+    left:10%;
+    width: 80%;
+    height: 160px;
     /*background-color: greenyellow;*/
     margin-bottom: 1%;
 }
@@ -3455,6 +3479,15 @@
     top:10%;
     height: 90%;
     width:50%;
+}
+
+.per-input-div textarea{
+    position: relative;
+    float: left;
+    left:5%;
+    top:10%;
+    height: 90%;
+    width:100%;
 }
 
 .per-input-div button{

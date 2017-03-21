@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+    <link rel="stylesheet" href="styles/font-awesome.css">
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script type="text/javascript" src="scripts/jquery-form.js"></script>
+    <!--<script src="scripts/echarts.js"></script>-->
+    <script src="scripts/customer.js"></script>
+    <!--<script src="scripts/saler.js"></script>-->
+    <title>个人信息</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button"></button>
+            <button class="button-bar-button" onclick="toIndex()">房间查看</button>
+            <button class="button-bar-button" onclick="toReservation()">我的预定</button>
+            <button class="button-bar-button" onclick="toHistory()">历史统计</button>
+            <button class="button-bar-button  button-bar-button-selected" onclick="toPersonal()">个人信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-basic">
+        <!--<div class="new-goods-left">-->
+        <!--<iframe name="myiframe" style="display:none;"></iframe>-->
+        <form id="newSalerForm" name="newSalerForm" method="post" class="new-goods-center"
+              action="https://192.168.1.107:8443/v1/store"
+              enctype="multipart/form-data" target="myiframe" onsubmit="getSalers()">
+            <div class="no-padding-element four-hundred-height">
+                <div class="per-line">
+                    <h3>会员卡号：</h3>
+                    <p id="cardId">1234567</p>
+                </div>
+                <div class="per-line">
+                    <h3>会员等级：</h3>
+                    <p id="level">Level 4 <span style="color:#15A68E;font-size: 14px" id="discount">8.5折</span></p>
+                </div>
+                <div class="per-line">
+                    <h3>会员积分：</h3>
+                    <p id="marks">6212</p>
+                </div>
+                <div class="per-line">
+                    <h3>累计消费：</h3>
+                    <p id="cost">￥980</p>
+                </div>
+                <div class="per-line">
+                    <h3>账户余额：</h3>
+                    <p id="leave">￥980</p>
+                </div>
+                <div class="per-line">
+                    <button class="pink-btn" onclick="ditoryAccount()">注销账户</button>
+                </div>
+            </div>
+
+            <div class="new-product-per-div">
+                <p class="new-product-per-p">银行卡号</p>
+                <input class="new-product-per-input" id="customAccount" type="text" placeholder="银行卡号"/>
+            </div>
+
+            <div class="new-product-per-div pink-btn" onclick="changeCard()">
+                <p class="text-to-center">确定</p>
+            </div>
+            <!--<input type="submit" class="product-notice-div commit-newSaler-div text-big" onclick="checkIfNull" onmousemove="toPic()" onmouseout="toText()" value="确认提交">-->
+        </form>
+        <!--</div>-->
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    <!--注销账户-->
+
+    $(document).ready(function () {
+        initPage();
+    });
+
+    function ditoryAccount() {
+        $.ajax({
+            url: "/member/vitiate",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                alert("注销成功！");
+                window.location.href = "";
+            }
+        });
+    }
+
+    function initPage() {
+        var cardId = document.getElementById("cardId");
+        var level = document.getElementById("level");
+        var discount = document.getElementById("discount");
+        var marks = document.getElementById("marks");
+        var cost = document.getElementById("cost");
+        var leave = document.getElementById("leave");
+        var customAccount = document.getElementById("customAccount");
+
+
+        $.ajax({
+            url: "/member/info",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                cardId.innerHTML = data.cardNum;
+                level.innerHTML = data.level;
+                discount.innerHTML = data.discount;
+                marks.innerHTML = data.marks;
+                cost.innerHTML = data.costTotal;
+                leave.innerHTML = data.balance;
+                customAccount.value = data.visaNum;
+            }
+        });
+    }
+
+    function changeCard() {
+        var customAccount = document.getElementById("customAccount");
+
+        $.ajax({
+            url: "/member/updateCard",
+            type: "GET",
+            dataType: 'JSON',
+            data:{
+                cardNum:customAccount.value
+            },
+            async: false,
+            success: function (data) {
+                location.reload();
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>

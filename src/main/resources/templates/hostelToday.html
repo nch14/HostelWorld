@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+    <script th:src="@{../scripts/customer.js}"></script>
+    <title>今日房情</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+
+            <button class="button-bar-button"></button>
+            <button class="button-bar-button" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toToday()">今日房情</button>
+            <button class="button-bar-button" onclick="toPlan()">酒店计划</button>
+            <button class="button-bar-button" onclick="toFinance()">财务信息</button>
+            <button class="button-bar-button" onclick="toInfo()">修改信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="full-basic">
+
+        <div class="new-goods-center" id="allDivs">
+
+
+            <div class="index-management-per-div" id="dc1">
+                <h4> 已入住
+                </h4>
+
+
+                <div class="suit-index-management">
+                    <img src="img/111.jpg"/>
+
+                    <h3>豪华大床房</h3>
+
+
+                    <h2 class="big-num">205</h2>
+                </div>
+                <!--<img class="index-sale-management-img" src="img/111.jpg">-->
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

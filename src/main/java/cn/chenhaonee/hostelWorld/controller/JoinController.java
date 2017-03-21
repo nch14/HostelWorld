@@ -72,4 +72,9 @@ public class JoinController {
     public String joinAsMember(){
         return "/joinAsMember";
     }
+
+    @RequestMapping(value = "/joinAsInn")
+    public String joinAsInn(){
+        return "/joinAsInn";
+    }
 }

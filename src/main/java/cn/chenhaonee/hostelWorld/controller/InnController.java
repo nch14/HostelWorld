@@ -1,6 +1,7 @@
 package cn.chenhaonee.hostelWorld.controller;
 
 import cn.chenhaonee.hostelWorld.domain.InnForClient;
+import cn.chenhaonee.hostelWorld.domain.RoomForClient;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
 import cn.chenhaonee.hostelWorld.service.InnService;
@@ -29,9 +30,11 @@ public class InnController {
     }
 
     @RequestMapping(value = "/roomList", produces = "application/json")
-    public List<Room> getRoomList(@RequestParam(value = "inn")Long inn,
-                                  @RequestParam(value = "start")String start,
-                                  @RequestParam(value = "end")String end){
-
+    public List<RoomForClient> getRoomList(@RequestParam(value = "inn") String inn,
+                                           @RequestParam(value = "start") String start,
+                                           @RequestParam(value = "end") String end) {
+        return innService.getRoomList(inn, start, end);
     }
+
+
 }

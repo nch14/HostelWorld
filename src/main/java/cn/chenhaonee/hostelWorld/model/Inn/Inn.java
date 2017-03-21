@@ -3,7 +3,7 @@ package cn.chenhaonee.hostelWorld.model.Inn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +15,6 @@ public class Inn {
 
     @Id
     private String id;
-
-    @OneToOne(mappedBy = "inn")
-    private InnOwner innOwner;
 
     private String nameForInn;
 
@@ -33,31 +30,32 @@ public class Inn {
 
     private Date avalibleDate;
 
+    private String hostelDesc;
+
     @OneToMany
     private List<Room> rooms;
 
     public Inn() {
     }
 
-    public Inn(String id, InnOwner innOwner, String nameForInn, String nameForInnOwner, String telNumber, String address, String emailAddress, Date applyDate, Date avalibleDate, List<Room> rooms) {
+    public Inn(String id, String nameForInn, String nameForInnOwner, String telNumber, String address, String emailAddress, String hostelDesc, List<Room> rooms) {
         this.id = id;
-        this.innOwner = innOwner;
         this.nameForInn = nameForInn;
         this.nameForInnOwner = nameForInnOwner;
         this.telNumber = telNumber;
         this.address = address;
         this.emailAddress = emailAddress;
-        this.applyDate = applyDate;
-        this.avalibleDate = avalibleDate;
+        this.hostelDesc = hostelDesc;
+        this.applyDate = Calendar.getInstance().getTime();
         this.rooms = rooms;
     }
 
-    public InnOwner getInnOwner() {
-        return innOwner;
+    public String getHostelDesc() {
+        return hostelDesc;
     }
 
-    public void setInnOwner(InnOwner innOwner) {
-        this.innOwner = innOwner;
+    public void setHostelDesc(String hostelDesc) {
+        this.hostelDesc = hostelDesc;
     }
 
     public String getId() {

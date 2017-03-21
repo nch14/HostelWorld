@@ -1,10 +1,10 @@
 package cn.chenhaonee.hostelWorld.dao;
 
-import cn.chenhaonee.hostelWorld.model.Inn.Room;
+import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Created by nichenhao on 2017/3/20.
  */
-public interface RoomRepository extends JpaRepository<Room, Long> {
+public interface InnOwnerRepository extends JpaRepository<InnOwner,String>{
 }
