@@ -3,9 +3,7 @@ package cn.chenhaonee.hostelWorld.service;
 import cn.chenhaonee.hostelWorld.dao.InnOwnerRepository;
 import cn.chenhaonee.hostelWorld.dao.PriceDao;
 import cn.chenhaonee.hostelWorld.dao.PullRequestRepository;
-import cn.chenhaonee.hostelWorld.domain.InnDetailClient;
-import cn.chenhaonee.hostelWorld.domain.RoomDetailClient;
-import cn.chenhaonee.hostelWorld.domain.RoomForClient;
+import cn.chenhaonee.hostelWorld.domain.*;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
@@ -14,10 +12,12 @@ import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
 import cn.chenhaonee.hostelWorld.model.common.OrderBill;
 import cn.chenhaonee.hostelWorld.model.common.Price;
 import cn.chenhaonee.hostelWorld.model.common.PullRequest;
+import cn.chenhaonee.hostelWorld.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -151,6 +151,10 @@ public class InnOwnerService {
         return roomList;
     }
 
+    public String findUsernameByInnId(String innId) {
+        return innService.findOne(innId).getNameForInnOwner();
+    }
+
     public List<RoomDetailClient> findRooms(String username) {
         InnOwner owner = ownerRepository.findOne(username);
         Inn inn = owner.getInn();
@@ -186,6 +190,42 @@ public class InnOwnerService {
                 .collect(Collectors.toList());
 
         return roomList;
+    }
+
+    /**
+     * 返回各个房型的入住次数统计
+     *
+     * @param ownerName
+     * @return
+     */
+    public List<TTO> roomType(String ownerName) {
+        InnOwner owner = ownerRepository.findOne(ownerName);
+        Inn inn = owner.getInn();
+        List<OrderBill> bills = orderService.findAllStoreOrders(inn.getId());
+        List<String> roomTypes = bills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
+        return Util.parse(roomTypes);
+    }
+
+    public List<TTO> totalVistors(String ownerName) {
+        InnOwner owner = ownerRepository.findOne(ownerName);
+        Inn inn = owner.getInn();
+        List<OrderBill> bills = orderService.findAllStoreOrders(inn.getId());
+        List<String> roomTypes = bills.stream().map(orderBill -> formartDate(orderBill.getArrivalDate(), "YYYY-MM-DD")).collect(Collectors.toList());
+        return Util.parse(roomTypes);
+    }
+
+    public List<BinaryDataDouble> totalMoney(String ownerName) {
+        InnOwner owner = ownerRepository.findOne(ownerName);
+        Inn inn = owner.getInn();
+        List<OrderBill> bills = orderService.findAllStoreOrders(inn.getId());
+        List<BinaryDataDouble> moneyList = bills.stream().map(orderBill -> new BinaryDataDouble(formartDate(orderBill.getArrivalDate(), "YYYY-MM"), orderBill.getCost())).collect(Collectors.toList());
+        return Util.parseToSum(moneyList);
+    }
+
+    private String formartDate(Date date, String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        String result = sdf.format(date);
+        return result;
     }
 
     public List<Double> findPrice(String username) {

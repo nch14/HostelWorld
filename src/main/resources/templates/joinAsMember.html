@@ -24,10 +24,10 @@
 
 			<div class="login-form">
 				<form th:action="@{/member/join}" method="post">
-					<input type="text" class="login-form-input" placeholder="银行卡号" nameToShow="cardNum" tabindex="1"/>
-					<input type="text" class="login-form-input" placeholder="有效期" nameToShow="validDate" tabindex="2"/>
-					<input type="text" class="login-form-input" placeholder="CVV码" nameToShow="cvv" tabindex="3"/>
-					<input type="text" class="login-form-input" placeholder="充值金额" nameToShow="money" tabindex="4"/>
+					<input type="text" class="login-form-input" placeholder="银行卡号" name="cardNum" tabindex="1"/>
+					<input type="text" class="login-form-input" placeholder="有效期" name="validDate" tabindex="2"/>
+					<input type="text" class="login-form-input" placeholder="CVV码" name="cvv" tabindex="3"/>
+					<input type="text" class="login-form-input" placeholder="充值金额" name="money" tabindex="4"/>
 					<input type="submit" class="login-form-submit" value="确定" tabindex="5"/>
 				</form>
 			</div>

@@ -92,7 +92,10 @@ public class ManagerService {
 
     public List<TTO> innSales() {
         List<OrderBill> bills = orderService.findAll();
-        List<String> count = bills.stream().map(orderBill -> orderBill.getInn()).collect(Collectors.toList());
+        List<String> count = bills.stream().map(orderBill -> {
+            String innId = orderBill.getInn();
+            return innService.findOne(innId).getNameForInn();
+        }).collect(Collectors.toList());
         return parse(count);
     }
 
@@ -129,9 +132,9 @@ public class ManagerService {
 
     private List<TTO> parse(List<String> list) {
         List<TTO> ttos = new ArrayList<>();
-        for (int i = 0; i < list.size() - 1; i++) {
+        for (int i = 0; i < list.size(); i++) {
             String s = list.get(i);
-            int count = 0;
+            int count = 1;
             for (int j = i + 1; j < list.size(); j++) {
                 String next = list.get(j);
                 if (s.equals(next)) {
@@ -139,8 +142,8 @@ public class ManagerService {
                     list.remove(j);
                     j--;
                 }
-                ttos.add(new TTO(s, count));
             }
+            ttos.add(new TTO(s, count));
         }
         return ttos;
     }

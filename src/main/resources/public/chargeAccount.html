@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles/boss.css" />
+		<script type="text/javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript" src="scripts/jqueryui.js"></script>
+		<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="scripts/json2.js"></script>
+		<script src="scripts/echarts.js"></script>
+		<script src="scripts/customer.js"></script>
+
+		<title>账户充值</title>
+	</head>
+	<body>
+		<div class="boss-allEelments">
+			<!--头部bar开始-->
+			<div class="boss-top-bar">
+				<p class="login-shop-head">Hostel World 账户充值</p>
+			</div>
+			<!--头部bar结束-->
+
+			<div class="login-form">
+
+					<input type="text" class="login-form-input" placeholder="充值金额" id="chargeMoney">
+					<input type="button" class="login-form-submit" onclick="charge()" value="确认充值">
+
+			</div>
+		</div>
+
+
+	<script type="text/javascript">
+		var chargeMoney=document.getElementById("chargeMoney");
+		function charge() {
+            $.ajax({
+                url: "/member/charge",
+                type: "GET",
+				data:{
+                    money:chargeMoney.value
+				},
+                dataType: 'JSON',
+                async: false,
+                success: function (data) {
+                   window.location.href="/customerPersonal.html";
+                }
+            });
+
+        }
+
+	</script>
+	</body>
+
+</html>

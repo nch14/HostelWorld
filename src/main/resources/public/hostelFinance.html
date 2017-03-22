@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script src="scripts/echarts.js"></script>
+    <script src="scripts/hostel.js"></script>
+    <!--<script src="scripts/indexManagement.js"></script>-->
+    <title>会员信息</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button" onclick="toCheckout()">离店登记</button>
+            <button class="button-bar-button" onclick="toToday()">今日房情</button>
+            <button class="button-bar-button" onclick="toPlan()">酒店计划</button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toFinance()">财务信息</button>
+            <button class="button-bar-button" onclick="toInfo()">修改信息</button>
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-detail ">
+
+        <div class="sale-basic-div table-with-pic-div">
+
+            <div class="goods-list-div" id="pieChartTwo">
+
+            </div>
+
+            <div class="goods-list-div" id="barChart">
+
+            </div>
+
+            <div class="goods-list-div" id="echart">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        initEchartsone();
+        initEchartstwo();
+        initEchartsthree();
+    });
+    function initEchartsone() {
+        $.ajax({
+            url: "/innOwner/statics/roomType",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                initPieOne(data);
+            }
+        });
+    }
+    function initEchartstwo() {
+        var dateList = [];
+        var valueList = [];
+        $.ajax({
+            url: "/innOwner/statics/totalVisitors",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                $.each(data, function (idx, item) {
+                    dateList.push(item.key);
+                    valueList.push(item.value);
+                });
+                initBarOne(dateList,valueList);
+            }
+        });
+
+    }
+    function initEchartsthree() {
+        var dateList = [];
+        var valueList = [];
+        $.ajax({
+            url: "/innOwner/statics/money",
+            type: "GET",
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                $.each(data, function (idx, item) {
+                    dateList.push(item.key);
+                    valueList.push(item.value);
+                });
+                initBarTwo(dateList,valueList);
+            }
+        });
+
+    }
+    function initPieOne(pieObjectList) {
+//        alert("hhh");
+        var myChart = echarts.init(document.getElementById('pieChartTwo'));
+        option = {
+            title : {
+                text: '房型统计',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+//            legend: {
+//                orient: 'vertical',
+//                left: 'left',
+//                data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+////            },
+            series : [
+                {
+                    name: '房型统计',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: pieObjectList,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+
+    function initBarOne(dateList,valueList) {
+
+        var myChart = echarts.init(document.getElementById('barChart'));
+        option = {
+            title : {
+                text: '入住统计',
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+
+                }
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['入住人次']
+            },
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    start: 80,
+                    end: 100
+                }
+            ],
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+//                    data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    data : dateList
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'入住人次',
+                    type:'bar',
+//                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                    data:valueList,
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                            {type : 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+
+
+
+    }
+
+    function initBarTwo(dateList,valueList) {
+
+        var myChart = echarts.init(document.getElementById('echart'));
+        option = {
+            title : {
+                text: '收入统计',
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+
+                }
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['收入']
+            },
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    start: 80,
+                    end: 100
+                }
+            ],
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+//                    data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    data : dateList
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'收入',
+                    type:'bar',
+//                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                    data:valueList,
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                            {type : 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

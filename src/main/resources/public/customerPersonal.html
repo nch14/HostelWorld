@@ -43,10 +43,8 @@
     <!--enctype="multipart/form-data"-->
     <div class="goods-basic">
         <!--<div class="new-goods-left">-->
-        <!--<iframe nameToShow="myiframe" style="display:none;"></iframe>-->
-        <form id="newSalerForm" nameToShow="newSalerForm" method="post" class="new-goods-center"
-              action="https://192.168.1.107:8443/v1/store"
-              enctype="multipart/form-data" target="myiframe" onsubmit="getSalers()">
+        <!--<iframe name="myiframe" style="display:none;"></iframe>-->
+        <div id="newSalerForm" name="newSalerForm" class="new-goods-center">
             <div class="no-padding-element four-hundred-height">
                 <div class="per-line">
                     <h3>会员卡号：</h3>
@@ -69,6 +67,8 @@
                     <p id="leave">￥980</p>
                 </div>
                 <div class="per-line">
+                    <button class="pink-btn" onclick="chargeAccount()">账户充值</button>
+                    <button class="pink-btn" style="visibility: hidden"></button>
                     <button class="pink-btn" onclick="ditoryAccount()">注销账户</button>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 <p class="text-to-center">确定</p>
             </div>
             <!--<input type="submit" class="product-notice-div commit-newSaler-div text-big" onclick="checkIfNull" onmousemove="toPic()" onmouseout="toText()" value="确认提交">-->
-        </form>
+        </div>
         <!--</div>-->
 
 
@@ -153,6 +153,10 @@
             }
         });
 
+    }
+
+    function chargeAccount() {
+        window.location.href="/chargeAccount.html";
     }
 
 </script>

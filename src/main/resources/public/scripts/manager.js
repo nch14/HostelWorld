@@ -72,8 +72,8 @@ function toBalance() {
     window.location.href = "managerBalance.html";
 }
 
-function toPlan() {
-    window.location.href = "hostelPlan.html";
+function toMembers() {
+    window.location.href = "managerMembers.html";
 }
 
 function toManagerToday(){
@@ -82,7 +82,7 @@ function toManagerToday(){
 }
 
 function toFinance() {
-    window.location.href = "hostelFinance.html";
+    window.location.href = "managerFinance.html";
 }
 
 var npdNum = 0;

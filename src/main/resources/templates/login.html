@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8"/>
-        <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
-        <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
-        <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
-        <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
-        <script th:src="@{../scripts/hostel.js}"></script>
-		<title>登录</title>
-	</head>
-	<body>
-		<div class="boss-allEelments">
-			<!--头部bar开始-->
-			<div class="boss-top-bar">
-				<p class="login-shop-head">Hostel World</p>
-			</div>
-			<!--头部bar结束-->
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
+    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
+    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
+    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
+    <script th:src="@{../scripts/hostel.js}"></script>
+    <title>登录</title>
+</head>
+<body>
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="login-shop-head">Hostel World</p>
+    </div>
+    <!--头部bar结束-->
 
-			<p th:if="${param.logout}" class="bg-warning">已注销</p>
-			<p th:if="${param.error}" class="bg-danger">有错误，请重试</p>
+    <p th:if="${param.logout}" class="bg-warning">已注销</p>
+    <p th:if="${param.error}" class="bg-danger">有错误，请重试</p>
 
-			<div class="login-form">
-				<form role="form" nameToShow="form" th:action="@{/login}" method="post">
-					<input type="text" class="login-form-input" nameToShow="username" placeholder="用户名" />
-					<input type="password" class="login-form-input" nameToShow="password" placeholder="密码" />
-					<a th:href="@{/join}">没有账号？去注册</a>
-					<input type="submit" id="login" class="login-form-submit" value="登录"/>
-				</form>
-			</div>
-		</div>
+    <div class="login-form">
+        <form role="form" name="form" th:action="@{/login}" method="post">
+            <input type="text" class="login-form-input" name="username" placeholder="用户名"/>
+            <input type="password" class="login-form-input" name="password" placeholder="密码"/>
+            <a th:href="@{/join}">没有账号？去注册</a>
+            <input type="submit" id="login" class="login-form-submit" value="登录"/>
+        </form>
+    </div>
+</div>
 
-	<script type="text/javascript">
-
-	</script>
-	</body>
+<script type="text/javascript">
+</script>
+</body>
 
 </html>

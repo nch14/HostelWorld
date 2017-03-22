@@ -206,7 +206,7 @@
         var orderId = document.getElementById("orderId");
         var customer = "";
         for (var i = 1; i < 4; i++) {
-            var cusName = document.getElementById("nameToShow" + i);
+            var cusName = document.getElementById("name" + i);
             var cusId = document.getElementById("id" + i);
             var perCustomer = cusName.value +"@"+ cusId.value;
 //            alert(perCustomer);
@@ -225,7 +225,7 @@
                 dataType: 'JSON',
                 data: {
                     no: orderId.value,
-                    nameToShow: customer,
+                    name: customer,
                     payInCard: payment
                 },
                 async: false,
@@ -246,7 +246,7 @@
                     roomName: $('#roomNum option:selected').val(),
                     memberUserName: memberCardId.value,
                     payInCard: payment,
-                    nameToShow: customer
+                    name: customer
                 },
                 dataType: 'JSON',
                 async: false,

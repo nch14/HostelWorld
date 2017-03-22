@@ -1,7 +1,9 @@
 package cn.chenhaonee.hostelWorld.controller;
 
+import cn.chenhaonee.hostelWorld.domain.BinaryDataDouble;
 import cn.chenhaonee.hostelWorld.domain.InnDetailClient;
 import cn.chenhaonee.hostelWorld.domain.RoomDetailClient;
+import cn.chenhaonee.hostelWorld.domain.TTO;
 import cn.chenhaonee.hostelWorld.service.InnOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -190,11 +192,33 @@ public class InnOwnerController {
 
     @ResponseBody
     @RequestMapping(value = "/today", method = RequestMethod.GET)
-    public List<RoomDetailClient> updateInfo(HttpSession session) {
-        String username = (String) session.getAttribute("username");
+    public List<RoomDetailClient> updateInfo(HttpSession session, @RequestParam(value = "inn", required = false) String inn) {
+
+        String username;
+        if (inn == null)
+            username = (String) session.getAttribute("username");
+        else
+            username = innOwnerService.findUsernameByInnId(inn);
         List<RoomDetailClient> rooms = innOwnerService.findRooms(username);
         return rooms;
     }
-
+    @ResponseBody
+    @RequestMapping(value = "/statics/roomType")
+    public List<TTO> roomType(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        return innOwnerService.roomType(username);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/statics/totalVisitors")
+    public List<TTO> totalVistors(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        return innOwnerService.totalVistors(username);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/statics/money")
+    public List<BinaryDataDouble> money(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        return innOwnerService.totalMoney(username);
+    }
 
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script src="scripts/echarts.js"></script>
+    <script src="scripts/manager.js"></script>
+    <!--<script src="scripts/indexManagement.js"></script>-->
+    <title>审批申请</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+
+            <button class="button-bar-button"></button>
+            <button class="button-bar-button" onclick="toApplication()">审批申请</button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toBalance()">分店结算</button>
+            <button class="button-bar-button" onclick="toManagerToday()">各店查询</button>
+            <button class="button-bar-button" onclick="toMembers()">会员信息</button>
+            <button class="button-bar-button" onclick="toFinance()">财务报表</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="full-basic">
+
+        <div class="new-goods-center" id="allDivs">
+
+
+                <div class="index-management-per-div" id="dc1">
+                    <div class="suit-index-management">
+                        <h4>鼓楼分店</h4>
+                        <h3>￥55000</h3>
+                        <button class="pink-btn">确认通过</button>
+                    </div>
+                </div>
+
+            <!--<div class="index-management-per-div">-->
+                <!--<div class="suit-index-management">-->
+                    <!--<h4>仙林分店</h4>-->
+                    <!--<h3>￥65000</h3>-->
+                    <!--<button class="pink-btn">确认通过</button>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<img class="index-sale-management-img" src="img/111.jpg">&ndash;&gt;-->
+
+
+            <!--</div>-->
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            initPage();
+        });
+
+        function initPage() {
+            var allDivs = document.getElementById("allDivs");
+
+            $.ajax({
+                url: "/manager/moneyToReturn",
+                type: "GET",
+                dataType: 'JSON',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (idx, item) {
+
+                        var perRoom = document.createElement("div");
+                        perRoom.setAttribute("class", "index-management-per-div");
+
+                        var perRoomDetail = document.createElement("div");
+                        perRoomDetail.setAttribute("class", "suit-index-management");
+
+                        var roomName = document.createElement("h4");
+                        roomName.innerHTML=item.nameToShow;
+                        var roomPrice = document.createElement("h3");
+                        roomPrice.innerHTML="￥"+item.value;
+
+                        var confirmBtn = document.createElement("button");
+                        confirmBtn.oid=item.innId;
+                        confirmBtn.money=item.value;
+                        confirmBtn.innerHTML="确认结算";
+                        confirmBtn.onclick=function () {
+                            confirmMoney(this);
+                        }
+
+                        perRoomDetail.appendChild(roomName);
+                        perRoomDetail.appendChild(roomPrice);
+                        perRoomDetail.appendChild(confirmBtn);
+                        perRoom.appendChild(perRoomDetail);
+
+                        allDivs.appendChild(perRoom);
+                    });
+                }
+            });
+        }
+
+        function confirmMoney(btn) {
+            $.ajax({
+                url: "/manager/moneyToReturn/return",
+                type: "GET",
+                data:{
+                    innId:btn.oid,
+                    money:btn.money
+                },
+                dataType: 'JSON',
+                async: false,
+                success: function (data) {
+                    location.reload();
+                }
+            });
+
+
+        }
+
+
+    </script>
+</body>
+</html>

@@ -14,6 +14,7 @@ import cn.chenhaonee.hostelWorld.model.common.OrderBill;
 import cn.chenhaonee.hostelWorld.service.MemberCardService;
 import cn.chenhaonee.hostelWorld.service.MemberService;
 import cn.chenhaonee.hostelWorld.service.OrderService;
+import cn.chenhaonee.hostelWorld.util.Util;
 import com.sun.org.apache.bcel.internal.generic.DASTORE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,17 +88,18 @@ public class MemberController {
         return "";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "{id}/charge")
-    public String addMoneyToAccount(@PathVariable(value = "id") String id,
-                                    @RequestParam(value = "money") double money) {
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/charge")
+    public boolean addMoneyToAccount(@RequestParam(value = "money") double money, HttpSession session) {
+        String username = (String) session.getAttribute("username");
         try {
-            memberService.chargeMoney(id, money);
+            memberService.chargeMoney(username, money);
         } catch (NoSuchUserException e) {
             e.printStackTrace();
         } catch (NoEnoughBalanceException e) {
             e.printStackTrace();
         }
-        return "**上一个界面**";
+        return true;
     }
 
     @RequestMapping(value = "/checkForRoom")
@@ -185,7 +187,7 @@ public class MemberController {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         List<String> roomTypes = orderBills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
-        return parse(roomTypes);
+        return Util.parse(roomTypes);
     }
 
     @ResponseBody
@@ -194,7 +196,7 @@ public class MemberController {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         List<String> innDiff = orderBills.stream().map(orderBill -> orderBill.getInn()).collect(Collectors.toList());
-        return parse(innDiff);
+        return Util.parse(innDiff);
     }
 
     @ResponseBody
@@ -206,7 +208,7 @@ public class MemberController {
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
             return sdf.format(orderBill.getArrivalDate());
         }).collect(Collectors.toList());
-        return parse(orders);
+        return Util.parse(orders);
     }
 
     /**
@@ -246,27 +248,4 @@ public class MemberController {
     }
 
 
-    private List<TTO> parse(List<String> list) {
-        List<TTO> ttos = new ArrayList<>();
-        for (int i = 0; i < list.size() - 1; i++) {
-            String s = list.get(i);
-            int count = 0;
-            for (int j = i + 1; j < list.size(); j++) {
-                String next = list.get(j);
-                if (s.equals(next)) {
-                    count++;
-                    list.remove(j);
-                    j--;
-                }
-                ttos.add(new TTO(s, count));
-            }
-        }
-        return ttos;
-       /* int num = 0;
-        for (String s : list) {
-            if (s.equals(raw))
-                num++;
-        }
-        return num;*/
-    }
 }
