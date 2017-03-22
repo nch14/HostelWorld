@@ -1,5 +1,7 @@
 package cn.chenhaonee.hostelWorld.model.Inn;
 
+import io.swagger.models.auth.In;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -47,6 +49,16 @@ public class Inn {
         this.emailAddress = emailAddress;
         this.hostelDesc = hostelDesc;
         this.applyDate = Calendar.getInstance().getTime();
+        this.rooms = rooms;
+    }
+
+    public void updateInn(String nameForInn, String nameForInnOwner, String telNumber, String address, String emailAddress, String hostelDesc, List<Room> rooms) {
+        this.nameForInn = nameForInn;
+        this.nameForInnOwner = nameForInnOwner;
+        this.telNumber = telNumber;
+        this.address = address;
+        this.emailAddress = emailAddress;
+        this.hostelDesc = hostelDesc;
         this.rooms = rooms;
     }
 

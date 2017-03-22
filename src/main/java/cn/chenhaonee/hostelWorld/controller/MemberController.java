@@ -53,7 +53,7 @@ public class MemberController {
                                 @RequestParam(value = "money") int money,
                                 ModelAndView modelAndView,
                                 HttpSession session) {
-        if (money<1000)
+        if (money < 1000)
             return "redirect:/join/joinAsMember";
         String passwordHash = (String) session.getAttribute("passwordHash");
         String username = (String) session.getAttribute("username");
@@ -136,7 +136,15 @@ public class MemberController {
         return true;
     }
 
-/*    @RequestMapping(value = "/myOrderPage")
+    @ResponseBody
+    @RequestMapping(value = "/cancelOne", produces = "application/json")
+    public boolean cancelOne(@RequestParam(value = "orderId") String orderId) {
+        orderService.cancelAnOrder(orderId);
+        return true;
+    }
+
+
+    @RequestMapping(value = "/myOrderPage")
     public String myOrderPage(Model model, HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
@@ -150,7 +158,7 @@ public class MemberController {
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         model.addAttribute("orderBills", orderBills);
         return "/customerHistory";
-    }*/
+    }
 
     /**
      * 查看订单
@@ -176,15 +184,8 @@ public class MemberController {
     public List<TTO> myRoomType(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
-
-/*        List<String> rooms = orderBills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
-        List<TTO> ttos = parse(rooms);
-        return ttos;*/
-        List<TTO> ttos = new ArrayList<>();
-        ttos.add(new TTO("大床房", 1));
-        ttos.add(new TTO("双产", 2));
-        ttos.add(new TTO("杀人啦", 3));
-        return ttos;
+        List<String> roomTypes = orderBills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
+        return parse(roomTypes);
     }
 
     @ResponseBody
@@ -192,17 +193,8 @@ public class MemberController {
     public List<TTO> myRoomWhere(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
-
-      /*  List<String> inns = orderBills.stream().map(orderBill -> orderBill.getInn()).collect(Collectors.toList());
-        List<TTO> ttos = parse(inns);
-        return ttos;*/
-
-        List<TTO> ttos = new ArrayList<>();
-        ttos.add(new TTO("京城1", 1));
-        ttos.add(new TTO("京城2", 2));
-        ttos.add(new TTO("京城3", 3));
-        ttos.add(new TTO("京城4", 14));
-        return ttos;
+        List<String> innDiff = orderBills.stream().map(orderBill -> orderBill.getInn()).collect(Collectors.toList());
+        return parse(innDiff);
     }
 
     @ResponseBody
@@ -210,24 +202,11 @@ public class MemberController {
     public List<TTO> myRoomMonth(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
-/*        // TODO: 2017/3/20 月份
-        List<String> rooms = orderBills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
-        List<TTO> ttos = parse(rooms);*/
-
-        List<TTO> ttos = new ArrayList<>();
-        ttos.add(new TTO("1月", 1));
-        ttos.add(new TTO("2月", 1));
-        ttos.add(new TTO("3月", 1));
-        ttos.add(new TTO("4月", 1));
-        ttos.add(new TTO("5月", 1));
-        ttos.add(new TTO("6月", 1));
-        ttos.add(new TTO("7月", 1));
-        ttos.add(new TTO("8月", 1));
-        ttos.add(new TTO("9月", 1));
-        ttos.add(new TTO("10月", 1));
-        ttos.add(new TTO("11月", 1));
-        ttos.add(new TTO("12月", 1));
-        return ttos;
+        List<String> orders = orderBills.stream().map(orderBill -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+            return sdf.format(orderBill.getArrivalDate());
+        }).collect(Collectors.toList());
+        return parse(orders);
     }
 
     /**
@@ -238,8 +217,10 @@ public class MemberController {
      */
     @ResponseBody
     @RequestMapping(value = "/info")
-    public PersonalInfo info(HttpSession session) {
-        String username = (String) session.getAttribute("username");
+    public PersonalInfo info(HttpSession session,
+                             @RequestParam(value = "username", required = false) String username) {
+        if (username == null)
+            username = (String) session.getAttribute("username");
         Member member = memberService.findOne(username);
         //String cardNum, String level, int marks, double costTotal, double balance, String visaNum
         PersonalInfo personalInfo = new PersonalInfo(member.getMemberCard().getId(), memberCardService.getLevel(member.getMemberCard().getSumCost()),
@@ -248,6 +229,7 @@ public class MemberController {
                 member.getMemberCard().getSumCost(), member.getMemberCard().getBalance(), member.getVisaCard().getCardNum());
         return personalInfo;
     }
+
 
     /**
      * 更换银行卡

@@ -13,30 +13,37 @@ import org.springframework.stereotype.Service;
  * Created by carlos on 2017/3/14.
  */
 @Service
-@ConfigurationProperties(prefix = "member.card")
 public class MemberCardService {
     @Autowired
     private MemberCardRepository cardRepository;
-
+    @Value("${member.card.levelOneMarks}")
     private int levelOneMarks;
+    @Value("${member.card.levelOneDiscount}")
     private double levelOneDiscount;
-
+    @Value("${member.card.levelTwoMarks}")
     private int levelTwoMarks;
+    @Value("${member.card.levelTwoDiscount}")
     private double levelTwoDiscount;
-
+    @Value("${member.card.levelThreeMarks}")
     private int levelThreeMarks;
+    @Value("${member.card.levelThreeDiscount}")
     private double levelThreeDiscount;
-
+    @Value("${member.card.levelFourMarks}")
     private int levelFourMarks;
+    @Value("${member.card.levelFourDiscount}")
     private double levelFourDiscount;
 
     public boolean consumes(String cardNum, double money) {
         MemberCard memberCard = cardRepository.findOne(cardNum);
         double balance = memberCard.getBalance();
-        if (balance < money)
+        double sumCost = memberCard.getSumCost();
+        int marks = memberCard.getCurrentMarks();
+        if (balance < money) {
             return false;
-        else {
+        } else {
             memberCard.setBalance(balance - money);
+            memberCard.setSumCost(sumCost + money);
+            memberCard.setCurrentMarks(marks + (int) money);
             cardRepository.save(memberCard);
             return true;
         }
@@ -44,7 +51,7 @@ public class MemberCardService {
 
 
     public MemberCard createCard(double money) {
-        MemberCard memberCard = new MemberCard(generateAnAvalibleId(),money);
+        MemberCard memberCard = new MemberCard(generateAnAvalibleId(), money);
         cardRepository.save(memberCard);
         return memberCard;
     }
@@ -62,32 +69,32 @@ public class MemberCardService {
         return result;
     }
 
-    public String getLevel(double sumCost){
-        if (sumCost<levelTwoMarks)
+    public String getLevel(double sumCost) {
+        if (sumCost < levelTwoMarks)
             return "普通会员";
-        if (sumCost<levelThreeMarks)
+        if (sumCost < levelThreeMarks)
             return "银卡会员";
-        if (sumCost<levelFourMarks)
+        if (sumCost < levelFourMarks)
             return "金卡会员";
         return "钻石会员";
     }
 
-    public String getDiscountInString(double sumCost){
-        if (sumCost<levelTwoMarks)
+    public String getDiscountInString(double sumCost) {
+        if (sumCost < levelTwoMarks)
             return "九折";
-        if (sumCost<levelThreeMarks)
+        if (sumCost < levelThreeMarks)
             return "八折";
-        if (sumCost<levelFourMarks)
+        if (sumCost < levelFourMarks)
             return "7折";
         return "五折";
     }
 
-    public double getDiscount(double sumCost){
-        if (sumCost<levelTwoMarks)
+    public double getDiscount(double sumCost) {
+        if (sumCost < levelTwoMarks)
             return levelOneDiscount;
-        if (sumCost<levelThreeMarks)
+        if (sumCost < levelThreeMarks)
             return levelTwoDiscount;
-        if (sumCost<levelFourMarks)
+        if (sumCost < levelFourMarks)
             return levelThreeDiscount;
         return levelFourDiscount;
     }

@@ -30,7 +30,7 @@
     <!--enctype="multipart/form-data"-->
     <div class="goods-basic">
         <!--<div class="new-goods-left">-->
-        <!--<iframe name="myiframe" style="display:none;"></iframe>-->
+        <!--<iframe nameToShow="myiframe" style="display:none;"></iframe>-->
         <form id="newSalerForm" class="new-goods-center" method="post" th:action="@{/join/common}">
 
             <p th:if="${session.errorJoin!=null}" class="warning-text" th:text="${session.errorJoinType}">hhh我是报错</p>
@@ -40,15 +40,15 @@
 
             <div class="new-product-per-div no-padding-element">
                 <p class="new-product-per-p">用户名</p>
-                <input class="new-product-per-input" id="storeName" type="text" placeholder="用户名" name="username"/>
+                <input class="new-product-per-input" id="storeName" type="text" placeholder="用户名" nameToShow="username"/>
             </div>
             <div class="new-product-per-div no-padding-element">
                 <p class="new-product-per-p">密码</p>
-                <input class="new-product-per-input" type="text" placeholder="密码" name="password"/>
+                <input class="new-product-per-input" type="text" placeholder="密码" nameToShow="password"/>
             </div>
             <div class="new-product-per-div no-padding-element">
                 <p class="new-product-per-p">确认密码</p>
-                <input class="new-product-per-input" type="text" placeholder="确认密码" name="passwordConfirm"/>
+                <input class="new-product-per-input" type="text" placeholder="确认密码" nameToShow="passwordConfirm"/>
             </div>
 
             <input class="new-product-per-div pink-btn-big" type="submit" value="确定"/>

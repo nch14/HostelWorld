@@ -33,6 +33,10 @@ public class MemberService {
         return memberRepository.findOne(username);
     }
 
+    public List<Member> findAll() {
+        return memberRepository.findAll();
+    }
+
     public void vitiateMembership(String memberId) throws NoSuchUserException {
         Member member = memberRepository.findOne(memberId);
         if (member == null)

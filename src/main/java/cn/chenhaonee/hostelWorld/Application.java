@@ -1,12 +1,15 @@
 package cn.chenhaonee.hostelWorld;
 
+import cn.chenhaonee.hostelWorld.dao.ManagerDao;
 import cn.chenhaonee.hostelWorld.dao.MemberRepository;
+import cn.chenhaonee.hostelWorld.model.Manager;
 import cn.chenhaonee.hostelWorld.model.Member.Member;
 import cn.chenhaonee.hostelWorld.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.transaction.Transactional;
 
@@ -22,15 +25,12 @@ public class Application implements CommandLineRunner {
     }
 
     @Autowired
-    private MemberRepository memberRepository;
+    private ManagerDao managerDao;
 
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        Member member = new Member();
-        member.setUsername("nch14");
-        member.setPasswordHash("nch2012");
-        member.setRole(Role.Member);
-        memberRepository.save(member);
+ /*       Manager manager = new Manager("manager", new BCryptPasswordEncoder().encode("manager"));
+        managerDao.save(manager);*/
     }
 }

@@ -1,6 +1,9 @@
 package cn.chenhaonee.hostelWorld.controller;
 
+import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
 import cn.chenhaonee.hostelWorld.model.Msg;
+import cn.chenhaonee.hostelWorld.service.InnOwnerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +19,9 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
+
+    @Autowired
+    private InnOwnerService ownerService;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -39,9 +45,13 @@ public class HomeController {
             case "Member":
                 return "redirect:/member/customerIndex";
             case "Inn":
-                return "redirect:/inn/customerIndex";
+                InnOwner innOwner = ownerService.findOne(username);
+                if (innOwner.getInn() == null)
+                    return "redirect:/noHostel.html";
+                else
+                    return "redirect:/innOwner/home";
             case "Manager":
-                return "redirect:/manager/customerIndex";
+                return "redirect:/managerAppli.html";
             default:
                 return "/";
         }

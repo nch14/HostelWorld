@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+    <link rel="stylesheet" href="styles/font-awesome.css">
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script type="text/javascript" src="scripts/jquery-form.js"></script>
+    <!--<script src="scripts/echarts.js"></script>-->
+    <script src="scripts/hostel.js"></script>
+    <!--<script src="scripts/saler.js"></script>-->
+    <title>申请开店</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button" onclick="toCheckout()">离店登记</button>
+            <button class="button-bar-button" onclick="toToday()">今日房情</button>
+            <button class="button-bar-button" onclick="toPlan()">酒店计划</button>
+            <button class="button-bar-button" onclick="toFinance()">财务信息</button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toInfo()">修改信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-basic">
+        <!--<div class="new-goods-left">-->
+        <!--<iframe nameToShow="myiframe" style="display:none;"></iframe>-->
+        <form id="newSalerForm" class="new-goods-center" >
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">酒店名字</p>
+                <input class="new-product-per-input" id="hostelName" type="text" placeholder="酒店名" nameToShow="storeName">
+            </div>
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">联系电话</p>
+                <input class="new-product-per-input" id="hostelTel" type="text" placeholder="联系电话" nameToShow="userName">
+            </div>
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">银行卡号</p>
+                <input class="new-product-per-input" id="hostelCard" type="text" placeholder="银行卡号" nameToShow="userName">
+            </div>
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">酒店描述</p>
+                <input class="new-product-per-input" id="hostelDesc" type="text" placeholder="酒店描述" nameToShow="userName">
+            </div>
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">酒店地址</p>
+                <input class="new-product-per-input" id="hostelAdd" type="text" placeholder="酒店地址" nameToShow="userName">
+            </div>
+            <div class="new-product-per-div no-padding-element">
+                <p class="new-product-per-p">电子邮箱</p>
+                <input class="new-product-per-input" id="hostelEmail" type="text" placeholder="电子邮箱" nameToShow="userName">
+            </div>
+            <div class="new-product-per-div-high no-padding-element" id="inputDiv1">
+                <p class="new-product-per-p-high">房间型号:浴缸大床房</p>
+                <div class="per-input-div" id="inputc1">
+                    <textarea type="text" id="wideBed"></textarea>
+                    <!--<button id="c1" onclick="deleteThisInput(this)">X</button>-->
+                </div>
+                <span id="addInput1">
+
+                </span>
+
+                <!--<div class="per-input-div">-->
+                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput1"> 添加房间</div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="new-product-per-div-high no-padding-element" id="inputDiv2">
+                <p class="new-product-per-p-high">房间型号:标准双床房</p>
+                <div class="per-input-div" id="inputcc1">
+                    <textarea type="text" id="doubleBed"></textarea>
+                </div>
+                <span id="addInput2">
+
+                </span>
+
+                <!--<div class="per-input-div">-->
+                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput2"> 添加房间</div>-->
+                <!--</div>-->
+            </div>
+
+
+            <div class="new-product-per-div-high no-padding-element" id="inputDiv3">
+                <p class="new-product-per-p-high">房间型号:海景休闲房</p>
+                <div class="per-input-div" id="inputccc1">
+                    <textarea type="text" id="seaBed"></textarea>
+                </div>
+                <span id="addInput3">
+
+                </span>
+
+                <!--<div class="per-input-div">-->
+                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput3"> 添加房间</div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="new-product-per-div pink-btn">
+                <p class="text-to-center" onclick="submitHostel()">确定</p>
+            </div>
+            <!--<input type="submit" class="product-notice-div commit-newSaler-div text-big" onclick="checkIfNull" onmousemove="toPic()" onmouseout="toText()" value="确认提交">-->
+        </form>
+        <!--</div>-->
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        initPage();
+    });
+
+    function  initPage() {
+        var hostelName = document.getElementById("hostelName");
+        var hostelTel = document.getElementById("hostelTel");
+        var hostelAdd = document.getElementById("hostelAdd");
+        var hostelCard = document.getElementById("hostelCard");
+        var hostelDesc = document.getElementById("hostelDesc");
+        var hostelEmail = document.getElementById("hostelEmail");
+        var wideBed = document.getElementById("wideBed");
+        var doubleBed = document.getElementById("doubleBed");
+        var seaBed = document.getElementById("seaBed");
+        $.ajax({
+            url: "innOwner/forInfo",
+            type: "GET",
+            dataType: 'JSON',
+            data:{
+            },
+            async: false,
+            success: function (data) {
+                hostelName.value=data.nameForInn,
+                    hostelTel.value=data.telNumber,
+                    hostelAdd.value = data.address,
+                    hostelCard.value = data.cardNum,
+                    hostelDesc.value = data.hostelDesc,
+                    hostelEmail.value  = data.emailAddress,
+                    wideBed.value=data.wideBed,
+                    doubleBed.value=data.doubleBed,
+                    seaBed.value=data.seaBed
+            }
+        });
+
+    }
+
+    function submitHostel() {
+        $.ajax({
+            url: "innOwner/applyConfirm",
+            type: "GET",
+            dataType: 'JSON',
+            data:{
+                hostelName:$("#hostelName").val(),
+                hostelTel:$("#hostelTel").val(),
+                hostelAdd:$("#hostelAdd").val(),
+                hostelCard:$("#hostelCard").val(),
+                hostelDesc:$("#hostelDesc").val(),
+                hostelEmail:$("#hostelEmail").val(),
+                wideBed:$("#wideBed").val(),
+                doubleBed:$("#doubleBed").val(),
+                seaBed:$("#seaBed").val()
+            },
+            async: false,
+            success: function (data) {
+                alert("提交成功！");
+                location.reload();
+            }
+        });
+    }
+
+//    function deleteThisInput(btn) {
+//        var inputToDelete =document.getElementById("input"+btn.id);
+//        var inputDiv= document.getElementById("inputDiv");
+//        inputDiv.removeChild(inputToDelete);
+//    }
+//
+//    function addPerInput(btn) {
+//    <div class="per-input-div" id="inputcc1">
+//            <input type="text"  onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
+//            <button id="cc1" onclick="deleteThisInput(this)">X</button>
+//            </div>
+//                var perInput = document.createElement("div");
+//        perInput.setAttribute("class","per-input-div");
+//        perInput.id="inputcc"+btn.cid;
+//        var perInput  =document.createElement("input");
+//        var deleteBtn = document.createElement("button");
+//
+//
+//
+//    }
+</script>
+</body>
+</html>

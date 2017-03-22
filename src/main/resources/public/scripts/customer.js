@@ -79,7 +79,7 @@ function toHistory(){
 }
 
 function toPersonal(){
-    window.location.href="customerPersonal.html";
+    window.location.href="../customerPersonal.html";
 }
 
 

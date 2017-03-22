@@ -1,13 +1,16 @@
 package cn.chenhaonee.hostelWorld.service;
 
 import cn.chenhaonee.hostelWorld.dao.InnRepository;
+import cn.chenhaonee.hostelWorld.dao.PriceDao;
 import cn.chenhaonee.hostelWorld.dao.RoomRepository;
 import cn.chenhaonee.hostelWorld.domain.InnForClient;
 import cn.chenhaonee.hostelWorld.domain.RoomForClient;
 
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
+import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
 import cn.chenhaonee.hostelWorld.model.Member.Member;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,12 @@ public class InnService {
     @Autowired
     private RoomRepository roomRepository;
 
+    @Autowired
+    private PriceService priceService;
+
+    @Autowired
+    private InnOwnerService ownerService;
+
     public List<InnForClient> getInnList() {
         List<InnForClient> inns = innRepository
                 .findAll()
@@ -43,8 +52,24 @@ public class InnService {
         return inns;
     }
 
+    public Inn findOne(String innName) {
+        return innRepository.findOne(innName);
+    }
 
-    public Inn createInn(String username, String hostelName, String hostelTel,
+    /**
+     * 创建Inn，必须由总经理审批后才行
+     * @param ownerName
+     * @param hostelName
+     * @param hostelTel
+     * @param hostelAdd
+     * @param hostelDesc
+     * @param hostelEmail
+     * @param wideBed
+     * @param doubleBed
+     * @param seaBed
+     * @return
+     */
+    public Inn createInn(String ownerName, String hostelName, String hostelTel,
                          String hostelAdd, String hostelDesc, String hostelEmail, String wideBed,
                          String doubleBed, String seaBed) {
         List<Room> rooms = new ArrayList<>();
@@ -53,31 +78,53 @@ public class InnService {
         rooms.addAll(Arrays.stream(seaBed.split(" ")).map(s -> new Room(s, "海景休闲房")).collect(Collectors.toList()));
         roomRepository.save(rooms);
 
-        Inn inn = new Inn(generateAnAvalibleId(), hostelName, username, hostelTel, hostelAdd, hostelEmail, hostelDesc, rooms);
+        Inn inn = new Inn(generateAnAvalibleId(), hostelName, ownerName, hostelTel, hostelAdd, hostelEmail, hostelDesc, rooms);
+        innRepository.save(inn);
+
+        //更新InnOwner对Inn的引用
+        ownerService.setInn(ownerName,inn);
+
+        return inn;
+    }
+
+    public Inn updateInn(String nameForInnOwner, String hostelName, String hostelTel,
+                         String hostelAdd, String hostelDesc, String hostelEmail, String wideBed,
+                         String doubleBed, String seaBed, Inn inn) {
+        List<Room> rooms = new ArrayList<>();
+        rooms.addAll(Arrays.stream(wideBed.split(" ")).map(s -> new Room(s, "浴缸大床房")).collect(Collectors.toList()));
+        rooms.addAll(Arrays.stream(doubleBed.split(" ")).map(s -> new Room(s, "标准双床房")).collect(Collectors.toList()));
+        rooms.addAll(Arrays.stream(seaBed.split(" ")).map(s -> new Room(s, "海景休闲房")).collect(Collectors.toList()));
+        roomRepository.save(rooms);
+
+
+        inn.updateInn(hostelName, nameForInnOwner, hostelTel, hostelAdd, hostelEmail, hostelDesc, rooms);
         innRepository.save(inn);
         return inn;
     }
 
 
-    public List<RoomForClient> getRoomList(String innId, String start, String end) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date from = null;
-        Date to = null;
-        try {
-            from = sdf.parse(start);
-            to = sdf.parse(end);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    /**
+     * 获得可以订房的房间列表
+     *
+     * @param innId
+     * @param start
+     * @param end
+     * @return
+     */
+    public List<RoomForClient> getRoomList(String innId, String start, String end) throws ParseException {
+        String ownerName = innRepository.findOne(innId).getNameForInnOwner();
 
-        //Inn inn = innRepository.findOne(id);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date from = sdf.parse(start);
+
+        Date to = sdf.parse(end);
 
         List<String> roomsUnavalible = orderService.getUnavalibleRoomNames(innId, from, to);
 
         List<RoomForClient> rooms = innRepository.findOne(innId).getRooms()
                 .stream()
                 .filter(room -> filter(room.getRoomName(), roomsUnavalible))
-                .map(room -> new RoomForClient(room.getId(), room.getRoomName(), room.getRoomType(), 0.0))
+                .map(room -> new RoomForClient(room.getId(), room.getRoomName(), room.getRoomType(), priceService.getPrice(ownerName, room.getRoomType())))
                 .collect(Collectors.toList());
 
         return rooms;
@@ -107,5 +154,9 @@ public class InnService {
             alreadyHasThisKey = innRepository.findByInnNum(result);
         } while (alreadyHasThisKey != 0);
         return result;
+    }
+
+    public List<Inn> getAllInns() {
+        return innRepository.findAll();
     }
 }

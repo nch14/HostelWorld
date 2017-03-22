@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="multipart/form-data"/>
+
+    <link rel="stylesheet" href="styles/boss.css"/>
+
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script type="text/javascript" src="scripts/jquery-form.js"></script>
+
+    <!--<script src="scripts/echarts.js"></script>-->
+    <script src="scripts/hostel.js"></script>
+    <!--<script src="scripts/goods.js"></script>-->
+    <title>酒店计划</title>
+</head>
+<body>
+
+<div class="boss-allEelments">
+    <!--头部bar开始-->
+    <div class="boss-top-bar">
+        <p class="shop-head">Hostel World</p>
+        <div class="message-head">
+            <button></button>
+            <button></button>
+        </div>
+        <div class="button-bar">
+            <button class="button-bar-button" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button" onclick="toCheckout()">离店登记</button>
+            <button class="button-bar-button" onclick="toToday()">今日房情</button>
+            <button class="button-bar-button button-bar-button-selected" onclick="toPlan()">酒店计划</button>
+            <button class="button-bar-button" onclick="toFinance()">财务信息</button>
+            <button class="button-bar-button" onclick="toInfo()">修改信息</button>
+
+        </div>
+    </div>
+    <!--头部bar结束-->
+    <!--商品概况开始-->
+    <!--enctype="multipart/form-data"-->
+    <div class="goods-basic">
+        <form class="new-goods-center" nameToShow="uploadGoodsForm" enctype="multipart/form-data">
+            <!--<form id="newGoodsForm" action="https://707.chenhaonee.cn:8443/v1/product/add" method="post" >-->
+
+            <!--<div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">-->
+                <!--<p class="new-product-per-p">房间种类</p>-->
+                <!--<select class="new-product-per-input" nameToShow="categoryId" id="roomCategory">-->
+                    <!--&lt;!&ndash;<option value="9">美容彩妆</option>&ndash;&gt;-->
+                    <!--<option value="浴缸大床房">浴缸大床房</option>-->
+                    <!--<option value="标准双床房">标准双床房</option>-->
+                    <!--<option value="海景休闲房">海景休闲房</option>-->
+                <!--</select>-->
+            <!--</div>-->
+
+            <!--<div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">-->
+                <!--<p class="new-product-per-div-p">开始日期</p>-->
+                <!--<input type="date" class="new-product-per-div-date">-->
+                <!--<p class="new-product-per-div-p">结束日期</p>-->
+                <!--<input type="date" class="new-product-per-div-date">-->
+            <!--</div>-->
+            <!--<div class="input-pic-div">-->
+            <span id="addNewProperty">
+                 <div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">
+                     <p class="new-product-per-p" id="wideP">浴缸大床房</p>
+                    <input class="new-product-per-input-left" type="text" placeholder="价格（元）" id="widePrice" >
+                 </div>
+
+                 <div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">
+                     <p class="new-product-per-p" d="doubleP">标准双床房</p>
+                    <input class="new-product-per-input-left" type="text" placeholder="价格（元）" id="doublePrice" >
+                 </div>
+
+                 <div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">
+                     <p class="new-product-per-p" d="seaP">海景休闲房</p>
+                    <input class="new-product-per-input-left" type="text" placeholder="价格（元）" id="seaPrice">
+                 </div>
+
+
+            </span>
+            <div class="new-product-per-div pink-btn" onclick="submitPrice()">
+                <p class="text-to-center">确定</p>
+            </div>
+
+            <!--</form>-->
+        </form>
+
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        initPage();
+    });
+
+    function initPage() {
+        var widePrice = document.getElementById("widePrice");
+        var doublePrice = document.getElementById("doublePrice");
+        var seaPrice = document.getElementById("seaPrice");
+        var wideP = document.getElementById("wideP");
+        var doubleP = document.getElementById("doubleP");
+        var seaP = document.getElementById("seaP");
+        $.ajax({
+            url: "/innOwner/forPrice",
+            type: "GET",
+            data: {
+            },
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                widePrice.value=data[0];
+                doublePrice.value=data[1];
+                seaPrice.value=data[2];
+            }
+        });
+    }
+
+   function submitPrice() {
+       var widePrice = document.getElementById("widePrice");
+       var doublePrice = document.getElementById("doublePrice");
+       var seaPrice = document.getElementById("seaPrice");
+       $.ajax({
+           url: "/innOwner/updatePrice",
+           type: "GET",
+           data: {
+               widePrice:widePrice.value,
+               doublePrice:doublePrice.value,
+               seaPrice:seaPrice.value,
+           },
+           dataType: 'JSON',
+           async: false,
+           success: function (data) {
+               location.reload();
+
+           }
+       });
+   }
+</script>
+</body>
+</html>

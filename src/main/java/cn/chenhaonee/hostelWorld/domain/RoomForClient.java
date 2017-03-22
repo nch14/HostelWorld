@@ -17,7 +17,7 @@ public class RoomForClient extends Room {
             case "浴缸大床房":
                 picUrl = "/imgs/wideBed.jpg";
                 break;
-            case "海景休闲床":
+            case "海景休闲房":
                 picUrl = "/imgs/seaBed.jpg";
                 break;
             case "标准双床房":

@@ -82,34 +82,49 @@
                     var perOrderDetail = document.createElement("div");
                     perOrderDetail.setAttribute("class", "suit-index-management");
                     var perState = document.createElement("p");
-                    perState.innerHTML = item.state;
+                    perState.innerHTML = item.state+"<br/>"+item.id;
                     var perImage = document.createElement("img");
-                    perImage.src = "img/111.jpg";
+                    perImage.src = item.room.picUrl;
                     var perName = document.createElement("h3");
-                    perName.innerHTML = item.room.roomType+" "+item.room.roomName;
+                    perName.innerHTML = item.room.roomType + " " + item.room.roomName;
                     var perPrice = document.createElement("h2");
                     perPrice.setAttribute("class", "big-num");
-                    perPrice.innerHTML = "￥"+item.cost;
+                    perPrice.innerHTML = "￥" + item.cost;
                     perOrderDetail.appendChild(perState);
                     perOrderDetail.appendChild(perImage);
                     perOrderDetail.appendChild(perName);
-                    if(item.state=="待入住"){
+                    if (item.state == "已预订") {
                         var perBtn = document.createElement("button");
                         perBtn.setAttribute("class", "pink-btn");
+                        perBtn.oid=item.id;
                         perBtn.innerHTML = "取消预订";
+                        perBtn.onclick=function () {
+                            cancelOrder(this);
+                        }
                         perOrderDetail.appendChild(perBtn);
                     }
                     perOrderDetail.appendChild(perPrice);
-
                     allDivs.appendChild(perOrderDetail);
                 });
             }
         });
 
 
+    }
 
-
-
+    function cancelOrder(btn) {
+        $.ajax({
+            url: "/member/cancelOne",
+            type: "GET",
+            data:{
+                orderId:btn.oid,
+            },
+            dataType: 'JSON',
+            async: false,
+            success: function (data) {
+                location.reload();
+            }
+        });
     }
 </script>
 

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +34,13 @@ public class InnController {
     @RequestMapping(value = "/roomList", produces = "application/json")
     public List<RoomForClient> getRoomList(@RequestParam(value = "inn") String inn,
                                            @RequestParam(value = "start") String start,
-                                           @RequestParam(value = "end") String end) {
-        return innService.getRoomList(inn, start, end);
+                                           @RequestParam(value = "end") String end, HttpSession session) {
+        try {
+            return innService.getRoomList(inn, start, end);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="Content-Type" content="multipart/form-data"/>
 
-    <link rel="stylesheet" th:href="@{../styles/boss.css}"/>
-    <link rel="stylesheet" th:href="@{../styles/font-awesome.css}"/>
-    <script type="text/javascript" th:src="@{../scripts/jquery-1.11.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/jquery-3.1.1.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/jquery.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/jqueryui.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/json2.js}"></script>
-    <script type="text/javascript" th:src="@{../scripts/jquery-form.js}"></script>
-    <script th:src="@{../scripts/hostel.js}"></script>
+    <link rel="stylesheet" href="styles/boss.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jqueryui.js"></script>
+    <script type="text/javascript" src="scripts/json2.js"></script>
+    <script src="scripts/echarts.js"></script>
+    <script src="scripts/hostel.js"></script>
+    <!--<script src="scripts/indexManagement.js"></script>-->
     <title>今日房情</title>
 </head>
 <body>
@@ -28,9 +28,8 @@
             <button></button>
         </div>
         <div class="button-bar">
-
-            <button class="button-bar-button"></button>
             <button class="button-bar-button" onclick="toCheckin()">办理入住</button>
+            <button class="button-bar-button" onclick="toCheckout()">离店登记</button>
             <button class="button-bar-button button-bar-button-selected" onclick="toToday()">今日房情</button>
             <button class="button-bar-button" onclick="toPlan()">酒店计划</button>
             <button class="button-bar-button" onclick="toFinance()">财务信息</button>
@@ -45,11 +44,15 @@
 
         <div class="new-goods-center" id="allDivs">
 
-
-
+           <!-- <div class="index-management-per-div">
+                <h4> 已入住</h4>
+                <div class="suit-index-management">
+                    <img src="img/111.jpg"/>
+                    <h3>豪华大床房 707</h3>
+                    <h2 class="big-num">205</h2>
+                </div>
+            </div-->
         </div>
-
-
     </div>
 </div>
 

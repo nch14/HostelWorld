@@ -65,24 +65,27 @@ function dataURItoBlob(base64Data) {
 
 
 function toInfo() {
-    window.location.href = "hostelInfo.html";
+    window.location.href = "/hostelInfo.html";
 }
 
 function toCheckin() {
-    window.location.href = "hostelCheckin.html";
+    window.location.href = "/hostelCheckin.html";
+}
+function toCheckout() {
+    window.location.href = "/hostelCheckout.html";
 }
 
 function toPlan() {
-    window.location.href = "hostelPlan.html";
+    window.location.href = "/hostelPlan.html";
 }
 
 function toToday(){
-    window.location.href = "hostelToday.html";
+    window.location.href = "/hostelToday.html";
 
 }
 
 function toFinance() {
-    window.location.href = "hostelFinance.html";
+    window.location.href = "/hostelFinance.html";
 }
 
 var npdNum = 0;
