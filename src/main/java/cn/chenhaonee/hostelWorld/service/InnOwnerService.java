@@ -198,7 +198,7 @@ public class InnOwnerService {
      * @param ownerName
      * @return
      */
-    public List<TTO> roomType(String ownerName) {
+    public List<BinaryData> roomType(String ownerName) {
         InnOwner owner = ownerRepository.findOne(ownerName);
         Inn inn = owner.getInn();
         List<OrderBill> bills = orderService.findAllStoreOrders(inn.getId());
@@ -206,7 +206,7 @@ public class InnOwnerService {
         return Util.parse(roomTypes);
     }
 
-    public List<TTO> totalVistors(String ownerName) {
+    public List<BinaryData> totalVistors(String ownerName) {
         InnOwner owner = ownerRepository.findOne(ownerName);
         Inn inn = owner.getInn();
         List<OrderBill> bills = orderService.findAllStoreOrders(inn.getId());

@@ -2,7 +2,7 @@ package cn.chenhaonee.hostelWorld.service;
 
 import cn.chenhaonee.hostelWorld.dao.MoneyGiveBackDao;
 import cn.chenhaonee.hostelWorld.dao.PullRequestRepository;
-import cn.chenhaonee.hostelWorld.domain.TTO;
+import cn.chenhaonee.hostelWorld.domain.BinaryData;
 import cn.chenhaonee.hostelWorld.domain.TTODouble;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
@@ -10,11 +10,9 @@ import cn.chenhaonee.hostelWorld.model.Member.Member;
 import cn.chenhaonee.hostelWorld.model.MoneyGiveBack;
 import cn.chenhaonee.hostelWorld.model.common.OrderBill;
 import cn.chenhaonee.hostelWorld.model.common.PullRequest;
-import io.swagger.models.auth.In;
+import cn.chenhaonee.hostelWorld.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import sun.dc.pr.PRError;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,17 +57,10 @@ public class ManagerService {
                     request.getDoubleBed(), request.getSeaBed(), inn);
         } else {
             //新建
-            /**
-             * String ownerName, String hostelName, String hostelTel,
-             String hostelAdd, String hostelDesc, String hostelEmail, String wideBed,
-             String doubleBed, String seaBed
-             */
             Inn inn = innService.createInn(request.getNameForInnOwner(), request.getNameForInn(), request.getTelNumber(),
                     request.getAddress(), request.getHostelDesc(), request.getEmailAddress(), request.getWideBed(),
                     request.getDoubleBed(), request.getSeaBed());
-
         }
-
     }
 
     public void deny(Long id) {
@@ -80,23 +71,23 @@ public class ManagerService {
 
     }
 
-    public List<TTO> roomType() {
+    public List<BinaryData> roomType() {
         List<Inn> inns = innService.getAllInns();
         List<String> roomTypes = new ArrayList<>();
         for (Inn i : inns) {
             List<Room> rooms = i.getRooms();
             roomTypes.addAll(rooms.stream().map(room -> room.getRoomType()).collect(Collectors.toList()));
         }
-        return parse(roomTypes);
+        return Util.parse(roomTypes);
     }
 
-    public List<TTO> innSales() {
+    public List<BinaryData> innSales() {
         List<OrderBill> bills = orderService.findAll();
         List<String> count = bills.stream().map(orderBill -> {
             String innId = orderBill.getInn();
             return innService.findOne(innId).getNameForInn();
         }).collect(Collectors.toList());
-        return parse(count);
+        return Util.parse(count);
     }
 
     public List<Member> allUsers() {
@@ -129,23 +120,4 @@ public class ManagerService {
             moneyGiveBack.addAlreadyPaid(money);
         moneyGiveBackDao.save(moneyGiveBack);
     }
-
-    private List<TTO> parse(List<String> list) {
-        List<TTO> ttos = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            String s = list.get(i);
-            int count = 1;
-            for (int j = i + 1; j < list.size(); j++) {
-                String next = list.get(j);
-                if (s.equals(next)) {
-                    count++;
-                    list.remove(j);
-                    j--;
-                }
-            }
-            ttos.add(new TTO(s, count));
-        }
-        return ttos;
-    }
-
 }

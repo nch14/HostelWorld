@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * Created by nichenhao on 2017/3/18.
@@ -42,9 +44,8 @@ public class MemberService {
         if (member == null)
             throw new NoSuchUserException();
         else {
-            MemberCard memberCard = member.getMemberCard();
-            CardEventLog eventLog = new CardEventLog(CardEvent.End);
-            memberCard.addCardEvent(eventLog);
+            member.setMemberCard(null);
+            member.setPasswordHash(null);
             memberRepository.save(member);
         }
     }

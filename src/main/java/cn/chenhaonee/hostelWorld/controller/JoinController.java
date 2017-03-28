@@ -38,14 +38,13 @@ public class JoinController {
 
     @RequestMapping(value = "/common")
     public ModelAndView join(@RequestParam(value = "username") String username,
-                       @RequestParam(value = "password") String password,
-                       @RequestParam(value = "passwordConfirm") String passwordConfirm,
-                       HttpSession session,
-                       Model model) {
+                             @RequestParam(value = "password") String password,
+                             @RequestParam(value = "passwordConfirm") String passwordConfirm,
+                             HttpSession session) {
         boolean result = userService.userIsExisting(username);
-        if (result){
-            session.setAttribute("errorJoin",true);
-            session.setAttribute("errorJoinType","该用户名已存在，请重试");
+        if (result) {
+            session.setAttribute("errorJoin", true);
+            session.setAttribute("errorJoinType", "该用户名已存在，请重试");
             return new ModelAndView("redirect:/join");
         }
 
@@ -57,24 +56,25 @@ public class JoinController {
             session.removeAttribute("errorJoin");
             session.removeAttribute("errorJoinType");
             return new ModelAndView("redirect:/join/chooseType");
-        }else {
-            session.setAttribute("errorJoin",true);
-            session.setAttribute("errorJoinType","密码不一致，请重试");
+        } else {
+            session.setAttribute("errorJoin", true);
+            session.setAttribute("errorJoinType", "密码不一致，请重试");
             return new ModelAndView("redirect:/join");
         }
     }
+
     @RequestMapping(value = "/chooseType")
-    public String chooseType(){
+    public String chooseType() {
         return "/registerChoose";
     }
 
     @RequestMapping(value = "/joinAsMember")
-    public String joinAsMember(){
+    public String joinAsMember() {
         return "/joinAsMember";
     }
 
     @RequestMapping(value = "/joinAsInn")
-    public String joinAsInn(){
+    public String joinAsInn() {
         return "/joinAsInn";
     }
 }

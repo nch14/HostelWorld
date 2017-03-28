@@ -124,21 +124,6 @@
             <!--</form>-->
         </div>
 
-        <!--<div class="product-notice-div add-property-div" onmousemove="toPicPro()" onmouseout="toTextPro()"-->
-        <!--onclick="newProperty()">-->
-        <!--<p id="add-property-btn-text" class="sale-basic-head text-center-square-button text-small">-->
-        <!--新建房客-->
-        <!--</p>-->
-        <!--</div>-->
-
-        <!--<div class="product-notice-div commit-newGoods-div" onmousemove="toPic()" onmouseout="toText()"-->
-        <!--onclick="toNewGoods()">-->
-        <!--<p id="add-goods-btn-text" class="sale-basic-head text-center-small-button text-big">-->
-        <!--下一步-->
-        <!--</p>-->
-        <!--</div>-->
-
-
     </div>
 </div>
 
@@ -148,14 +133,6 @@
     $(document).ready(function () {
         initSelect();
     });
-
-    //    var sel = document.getElementById("roomCategory");
-    //    sel.addEventListener("change", A(sel), false);
-    //
-    //    function A(obj)
-    //    {
-    //        initSelect();
-    //    }
 
     function initSelect() {
 //        alert("hhh");
@@ -230,8 +207,8 @@
                 },
                 async: false,
                 success: function (data) {
-                    alert("成功");
-//                    location.reload();
+                    //alert("成功");
+                  location.reload();
                 }
             });
 

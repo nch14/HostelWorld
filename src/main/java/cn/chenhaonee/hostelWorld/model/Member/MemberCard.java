@@ -17,8 +17,6 @@ public class MemberCard {
     private double balance;
     private Double sumCost;
     private int currentMarks;
-    @OneToMany(targetEntity = CardEventLog.class,cascade = CascadeType.ALL)
-    private List<CardEventLog> cardEventLogList;
 
     public MemberCard() {
     }
@@ -28,7 +26,6 @@ public class MemberCard {
         sumCost = 0.0;
         this.balance=balance;
         currentMarks =0;
-        cardEventLogList = new ArrayList<>();
     }
 
     public String getId() {
@@ -61,17 +58,5 @@ public class MemberCard {
 
     public void setCurrentMarks(int currentMarks) {
         this.currentMarks = currentMarks;
-    }
-
-    public List<CardEventLog> getCardEventLogList() {
-        return cardEventLogList;
-    }
-
-    public void setCardEventLogList(List<CardEventLog> cardEventLogList) {
-        this.cardEventLogList = cardEventLogList;
-    }
-
-    public void addCardEvent(CardEventLog eventLog){
-        cardEventLogList.add(eventLog);
     }
 }

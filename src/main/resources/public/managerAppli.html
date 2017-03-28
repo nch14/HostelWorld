@@ -94,6 +94,7 @@
                     application.innerHTML=item.type;
                     var confirmBtn = document.createElement("button");
                     confirmBtn.setAttribute("class","pink-btn");
+                    confirmBtn.innerHTML="确认通过"
                     confirmBtn.aid=item.id;
                     confirmBtn.onclick=function () {
                         confirmThis(this);

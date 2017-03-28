@@ -1,9 +1,8 @@
 package cn.chenhaonee.hostelWorld.controller;
 
-import cn.chenhaonee.hostelWorld.dao.MemberRepository;
 import cn.chenhaonee.hostelWorld.domain.PersonalInfo;
 import cn.chenhaonee.hostelWorld.domain.RoomForClient;
-import cn.chenhaonee.hostelWorld.domain.TTO;
+import cn.chenhaonee.hostelWorld.domain.BinaryData;
 import cn.chenhaonee.hostelWorld.exception.NoEnoughBalanceException;
 import cn.chenhaonee.hostelWorld.exception.NoSuchUserException;
 import cn.chenhaonee.hostelWorld.exception.NoSuchVisaCardException;
@@ -15,18 +14,15 @@ import cn.chenhaonee.hostelWorld.service.MemberCardService;
 import cn.chenhaonee.hostelWorld.service.MemberService;
 import cn.chenhaonee.hostelWorld.service.OrderService;
 import cn.chenhaonee.hostelWorld.util.Util;
-import com.sun.org.apache.bcel.internal.generic.DASTORE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sun.dc.pr.PRError;
 
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,7 +72,7 @@ public class MemberController {
         return "/customerIndex";
     }
 
-
+    @ResponseBody
     @RequestMapping(method = RequestMethod.GET, value = "/vitiate")
     public String stopMembership(HttpSession session) {
         String username = (String) session.getAttribute("username");
@@ -124,15 +120,16 @@ public class MemberController {
                            @RequestParam(value = "inDate") String inDate,
                            @RequestParam(value = "outDate") String outDate,
                            HttpSession session) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date in = null;
         Date out = null;
         try {
-            in = simpleDateFormat.parse(inDate);
-            out = simpleDateFormat.parse(outDate);
+            in = sdf.parse(inDate);
+            out = sdf.parse(outDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         String username = (String) session.getAttribute("username");
         orderService.makeAnOrder(username, hotelId, roomId, in, out);
         return true;
@@ -175,7 +172,7 @@ public class MemberController {
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         orderBills = orderBills.stream().map(orderBill -> {
             Room room = orderBill.getRoom();
-            orderBill.setRoom(new RoomForClient(room.getId(), room.getRoomName(), room.getRoomType(), 0l));
+            orderBill.setRoom(new RoomForClient(room.getId(), room.getRoomName(), room.getRoomType(), orderBill.getCost()));
             return orderBill;
         }).collect(Collectors.toList());
         return orderBills;
@@ -183,7 +180,7 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping(value = "/myOrderData/roomType")
-    public List<TTO> myRoomType(HttpSession session) {
+    public List<BinaryData> myRoomType(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         List<String> roomTypes = orderBills.stream().map(orderBill -> orderBill.getRoom().getRoomType()).collect(Collectors.toList());
@@ -192,7 +189,7 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping(value = "/myOrderData/innDiff")
-    public List<TTO> myRoomWhere(HttpSession session) {
+    public List<BinaryData> myRoomWhere(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         List<String> innDiff = orderBills.stream().map(orderBill -> orderBill.getInn()).collect(Collectors.toList());
@@ -201,11 +198,11 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping(value = "/myOrderData/orders")
-    public List<TTO> myRoomMonth(HttpSession session) {
+    public List<BinaryData> myRoomMonth(HttpSession session) {
         String username = (String) session.getAttribute("username");
         List<OrderBill> orderBills = memberService.getAllMyOrders(username);
         List<String> orders = orderBills.stream().map(orderBill -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
             return sdf.format(orderBill.getArrivalDate());
         }).collect(Collectors.toList());
         return Util.parse(orders);
@@ -223,6 +220,8 @@ public class MemberController {
                              @RequestParam(value = "username", required = false) String username) {
         if (username == null)
             username = (String) session.getAttribute("username");
+        if (username == null)
+            return null;
         Member member = memberService.findOne(username);
         //String cardNum, String level, int marks, double costTotal, double balance, String visaNum
         PersonalInfo personalInfo = new PersonalInfo(member.getMemberCard().getId(), memberCardService.getLevel(member.getMemberCard().getSumCost()),

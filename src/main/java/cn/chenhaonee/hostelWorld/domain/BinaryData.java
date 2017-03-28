@@ -3,11 +3,11 @@ package cn.chenhaonee.hostelWorld.domain;
 /**
  * Created by nichenhao on 2017/3/20.
  */
-public class TTO {
+public class BinaryData {
     private String name;
     private int value;
 
-    public TTO(String name, int value) {
+    public BinaryData(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -28,6 +28,6 @@ public class TTO {
         this.value = value;
     }
 
-    public TTO() {
+    public BinaryData() {
     }
 }

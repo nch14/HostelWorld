@@ -67,7 +67,7 @@ function dataURItoBlob(base64Data) {
 
 
 function toIndex(){
-    window.location.href="customerIndex.html";
+    window.location.href="/member/customerIndex";
 }
 
 function toReservation(){
@@ -75,7 +75,7 @@ function toReservation(){
 }
 
 function toHistory(){
-    window.location.href="/customerHistory.html";
+    window.location.href="../customerHistory.html";
 }
 
 function toPersonal(){

@@ -64,7 +64,7 @@ public class OrderService {
 
     public List<String> getUnavalibleRoomNames(String inn, Date inDate, Date outDate) {
         List<Long> roomIds = new ArrayList<>();
-        int days = (int) ((outDate.getTime() - inDate.getTime()) / 1000 * 60 * 60 * 24);
+        int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
             List<RoomArrangement> roomArrangements = roomArragementDao.findByInnNameAndDate(inn, thisDay);
@@ -82,7 +82,7 @@ public class OrderService {
         Member member = memberService.findOne(username);
         double discount = memberCardService.getDiscount(member.getMemberCard().getSumCost());
 
-        int days = (int) ((outDate.getTime() - inDate.getTime()) / 1000 * 60 * 60 * 24);
+        int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
 
         Price price = priceDao.findByInnOwnerNameAndRoomType(inn.getNameForInnOwner(), room.getRoomType());
         double cost = days * price.getPrice() * discount;

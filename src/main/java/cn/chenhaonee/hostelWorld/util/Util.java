@@ -1,8 +1,7 @@
 package cn.chenhaonee.hostelWorld.util;
 
 import cn.chenhaonee.hostelWorld.domain.BinaryDataDouble;
-import cn.chenhaonee.hostelWorld.domain.TTO;
-import cn.chenhaonee.hostelWorld.domain.TTODouble;
+import cn.chenhaonee.hostelWorld.domain.BinaryData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +11,9 @@ import java.util.List;
  */
 public class Util {
 
-    public static List<TTO> parse(List<String> list) {
-        List<TTO> ttos = new ArrayList<>();
-        for (int i = 1; i < list.size(); i++) {
+    public static List<BinaryData> parse(List<String> list) {
+        List<BinaryData> binaryDatas = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
             String s = list.get(i);
             int count = 1;
             for (int j = i + 1; j < list.size(); j++) {
@@ -25,14 +24,14 @@ public class Util {
                     j--;
                 }
             }
-            ttos.add(new TTO(s, count));
+            binaryDatas.add(new BinaryData(s, count));
         }
-        return ttos;
+        return binaryDatas;
     }
 
     public static List<BinaryDataDouble> parseToSum(List<BinaryDataDouble> list) {
         List<BinaryDataDouble> ttos = new ArrayList<>();
-        for (int i = 1; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             String s = list.get(i).getName();
             double sum = list.get(i).getValue();
             for (int j = i + 1; j < list.size(); j++) {
@@ -47,5 +46,4 @@ public class Util {
         }
         return ttos;
     }
-
 }

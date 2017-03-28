@@ -17,12 +17,10 @@ public class InitVisaCard {
     private VisaCardRepository visaCardRepository;
 
     public void init() {
+        visaCardRepository.deleteAll();
         List<VisaCard> visaCards = new ArrayList<>();
-        visaCards.add(new VisaCard("350119962248", 500000));
-        visaCards.add(new VisaCard("350119962348", 500000));
-        visaCards.add(new VisaCard("350119962448", 1500));
-        visaCards.add(new VisaCard("350119962548", 500));
-        visaCards.add(new VisaCard("350119962648", 2500));
+        visaCards.add(new VisaCard("1111111111111111","233","09/33", 500000));
+        visaCards.add(new VisaCard("2222222222222222","233","09/33",  500000));
         visaCardRepository.save(visaCards);
     }
 }

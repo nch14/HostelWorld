@@ -3,7 +3,7 @@ package cn.chenhaonee.hostelWorld.controller;
 import cn.chenhaonee.hostelWorld.domain.BinaryDataDouble;
 import cn.chenhaonee.hostelWorld.domain.InnDetailClient;
 import cn.chenhaonee.hostelWorld.domain.RoomDetailClient;
-import cn.chenhaonee.hostelWorld.domain.TTO;
+import cn.chenhaonee.hostelWorld.domain.BinaryData;
 import cn.chenhaonee.hostelWorld.service.InnOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -113,6 +113,9 @@ public class InnOwnerController {
             e.printStackTrace();
         }
 
+        if (memberUserName.length()==0)
+            memberUserName=null;
+
         String orderId = innOwnerService.checkIn(username, memberUserName, inn, roomId, from, to, nameList, payInCard);
         return orderId;
     }
@@ -193,7 +196,6 @@ public class InnOwnerController {
     @ResponseBody
     @RequestMapping(value = "/today", method = RequestMethod.GET)
     public List<RoomDetailClient> updateInfo(HttpSession session, @RequestParam(value = "inn", required = false) String inn) {
-
         String username;
         if (inn == null)
             username = (String) session.getAttribute("username");
@@ -204,13 +206,13 @@ public class InnOwnerController {
     }
     @ResponseBody
     @RequestMapping(value = "/statics/roomType")
-    public List<TTO> roomType(HttpSession session) {
+    public List<BinaryData> roomType(HttpSession session) {
         String username = (String) session.getAttribute("username");
         return innOwnerService.roomType(username);
     }
     @ResponseBody
     @RequestMapping(value = "/statics/totalVisitors")
-    public List<TTO> totalVistors(HttpSession session) {
+    public List<BinaryData> totalVistors(HttpSession session) {
         String username = (String) session.getAttribute("username");
         return innOwnerService.totalVistors(username);
     }

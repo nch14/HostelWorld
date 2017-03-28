@@ -33,6 +33,10 @@ public class MemberCardService {
     @Value("${member.card.levelFourDiscount}")
     private double levelFourDiscount;
 
+    public MemberCard findOne(String cardNum){
+        return cardRepository.findOne(cardNum);
+    }
+
     public boolean consumes(String cardNum, double money) {
         MemberCard memberCard = cardRepository.findOne(cardNum);
         double balance = memberCard.getBalance();

@@ -20,6 +20,13 @@ public class VisaCard {
         this.balance = balance;
     }
 
+    public VisaCard(String cardNum, String cvv, String validDate, double balance) {
+        this.cardNum = cardNum;
+        this.cvv = cvv;
+        this.validDate = validDate;
+        this.balance = balance;
+    }
+
     public VisaCard() {
 
     }
