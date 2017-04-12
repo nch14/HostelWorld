@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.MemberRepository;
+import cn.chenhaonee.hostelWorld.repository.MemberRepository;
 import cn.chenhaonee.hostelWorld.exception.NoEnoughBalanceException;
 import cn.chenhaonee.hostelWorld.exception.NoSuchUserException;
 import cn.chenhaonee.hostelWorld.exception.NoSuchVisaCardException;
@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * Created by nichenhao on 2017/3/18.

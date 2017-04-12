@@ -1,16 +1,12 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.InnRepository;
-import cn.chenhaonee.hostelWorld.dao.PriceDao;
-import cn.chenhaonee.hostelWorld.dao.RoomRepository;
+import cn.chenhaonee.hostelWorld.repository.InnRepository;
+import cn.chenhaonee.hostelWorld.repository.RoomRepository;
 import cn.chenhaonee.hostelWorld.domain.InnForClient;
 import cn.chenhaonee.hostelWorld.domain.RoomForClient;
 
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
-import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
-import cn.chenhaonee.hostelWorld.model.Member.Member;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

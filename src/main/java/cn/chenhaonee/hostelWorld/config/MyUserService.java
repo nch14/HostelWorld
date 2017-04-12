@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.config;
 
-import cn.chenhaonee.hostelWorld.dao.UserRepository;
+import cn.chenhaonee.hostelWorld.repository.UserRepository;
 import cn.chenhaonee.hostelWorld.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

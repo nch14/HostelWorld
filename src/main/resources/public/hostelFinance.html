@@ -13,7 +13,6 @@
     <script type="text/javascript" src="scripts/json2.js"></script>
     <script src="scripts/echarts.js"></script>
     <script src="scripts/hostel.js"></script>
-    <!--<script src="scripts/indexManagement.js"></script>-->
     <title>会员信息</title>
 </head>
 <body>
@@ -36,9 +35,7 @@
             <button class="button-bar-button" onclick="toInfo()">修改信息</button>
         </div>
     </div>
-    <!--头部bar结束-->
-    <!--商品概况开始-->
-    <!--enctype="multipart/form-data"-->
+
     <div class="goods-detail ">
 
         <div class="sale-basic-div table-with-pic-div">
@@ -124,11 +121,6 @@
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-//            legend: {
-//                orient: 'vertical',
-//                left: 'left',
-//                data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-////            },
             series : [
                 {
                     name: '房型统计',
@@ -280,13 +272,8 @@
                 }
             ]
         };
-
         myChart.setOption(option);
-
-
     }
-
-
 </script>
 
 

@@ -1,4 +1,4 @@
-package cn.chenhaonee.hostelWorld.dao;
+package cn.chenhaonee.hostelWorld.repository;
 
 import cn.chenhaonee.hostelWorld.model.Member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

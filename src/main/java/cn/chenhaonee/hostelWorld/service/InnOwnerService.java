@@ -1,8 +1,8 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.InnOwnerRepository;
-import cn.chenhaonee.hostelWorld.dao.PriceDao;
-import cn.chenhaonee.hostelWorld.dao.PullRequestRepository;
+import cn.chenhaonee.hostelWorld.repository.InnOwnerRepository;
+import cn.chenhaonee.hostelWorld.repository.PriceRepository;
+import cn.chenhaonee.hostelWorld.repository.PullRequestRepository;
 import cn.chenhaonee.hostelWorld.domain.*;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
@@ -11,7 +11,7 @@ import cn.chenhaonee.hostelWorld.model.Member.Member;
 import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
 import cn.chenhaonee.hostelWorld.model.common.OrderBill;
 import cn.chenhaonee.hostelWorld.model.common.Price;
-import cn.chenhaonee.hostelWorld.model.common.PullRequest;
+import cn.chenhaonee.hostelWorld.model.common.HostelRequest;
 import cn.chenhaonee.hostelWorld.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class InnOwnerService {
 
     @Autowired
-    private PriceDao priceDao;
+    private PriceRepository priceRepository;
     @Autowired
     private InnService innService;
 
@@ -69,8 +69,8 @@ public class InnOwnerService {
                                 String doubleBed, String seaBed, String hostelCard) {
         VisaCard visaCard = visaService.getVisaCard(hostelCard);
 
-        PullRequest pullRequest = new PullRequest(null, hostelName, username, hostelTel, hostelAdd, hostelEmail, hostelDesc, wideBed, doubleBed, seaBed, "新建店铺");
-        requestRepository.save(pullRequest);
+        HostelRequest hostelRequest = new HostelRequest(null, hostelName, username, hostelTel, hostelAdd, hostelEmail, hostelDesc, wideBed, doubleBed, seaBed, "新建店铺");
+        requestRepository.save(hostelRequest);
 
         InnOwner owner = new InnOwner(username, passwordHash, visaCard, null);
         ownerRepository.save(owner);
@@ -103,7 +103,7 @@ public class InnOwnerService {
         //计算金额
         Room room = roomService.getRoom(roomId);
         String roomType = room.getRoomType();
-        Price price = priceDao.findByInnOwnerNameAndRoomType(ownerName, roomType);
+        Price price = priceRepository.findByInnOwnerNameAndRoomType(ownerName, roomType);
         int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
         double cost = days * price.getPrice() * discount;
 
@@ -181,7 +181,7 @@ public class InnOwnerService {
                             state = "已离店";
 
                     }
-                    Price price = priceDao.findByInnOwnerNameAndRoomType(username, room.getRoomType());
+                    Price price = priceRepository.findByInnOwnerNameAndRoomType(username, room.getRoomType());
                     double priceValue = 0;
                     if (price != null)
                         priceValue = price.getPrice();
@@ -232,9 +232,9 @@ public class InnOwnerService {
         InnOwner owner = ownerRepository.findOne(username);
 
         List<Double> doubles = new ArrayList<>();
-        Price priceForB = priceDao.findByInnOwnerNameAndRoomType(username, "浴缸大床房");
-        Price priceForD = priceDao.findByInnOwnerNameAndRoomType(username, "标准双床房");
-        Price priceForS = priceDao.findByInnOwnerNameAndRoomType(username, "海景休闲房");
+        Price priceForB = priceRepository.findByInnOwnerNameAndRoomType(username, "浴缸大床房");
+        Price priceForD = priceRepository.findByInnOwnerNameAndRoomType(username, "标准双床房");
+        Price priceForS = priceRepository.findByInnOwnerNameAndRoomType(username, "海景休闲房");
         doubles.add(priceForB != null ? priceForB.getPrice() : 0);
         doubles.add(priceForD != null ? priceForD.getPrice() : 0);
         doubles.add(priceForS != null ? priceForS.getPrice() : 0);
@@ -243,26 +243,26 @@ public class InnOwnerService {
     }
 
     public void setPrice(String username, double b, double d, double s) {
-        Price priceForB = priceDao.findByInnOwnerNameAndRoomType(username, "浴缸大床房");
+        Price priceForB = priceRepository.findByInnOwnerNameAndRoomType(username, "浴缸大床房");
         if (priceForB == null)
-            priceDao.save(new Price(username, "浴缸大床房", b));
+            priceRepository.save(new Price(username, "浴缸大床房", b));
         else {
             priceForB.setPrice(b);
-            priceDao.save(priceForB);
+            priceRepository.save(priceForB);
         }
-        Price priceForD = priceDao.findByInnOwnerNameAndRoomType(username, "标准双床房");
+        Price priceForD = priceRepository.findByInnOwnerNameAndRoomType(username, "标准双床房");
         if (priceForD == null)
-            priceDao.save(new Price(username, "标准双床房", d));
+            priceRepository.save(new Price(username, "标准双床房", d));
         else {
             priceForD.setPrice(d);
-            priceDao.save(priceForD);
+            priceRepository.save(priceForD);
         }
-        Price priceForS = priceDao.findByInnOwnerNameAndRoomType(username, "海景休闲房");
+        Price priceForS = priceRepository.findByInnOwnerNameAndRoomType(username, "海景休闲房");
         if (priceForS == null)
-            priceDao.save(new Price(username, "海景休闲房", s));
+            priceRepository.save(new Price(username, "海景休闲房", s));
         else {
             priceForS.setPrice(s);
-            priceDao.save(priceForS);
+            priceRepository.save(priceForS);
         }
 
     }
@@ -284,8 +284,8 @@ public class InnOwnerService {
         owner.setVisaCard(visaCard);
         Inn inn = owner.getInn();
 
-        PullRequest pullRequest = new PullRequest(inn.getId(), hostelName, username, hostelTel, hostelAdd, hostelEmail, hostelDesc, wideBed, doubleBed, seaBed, "修改信息");
-        requestRepository.save(pullRequest);
+        HostelRequest hostelRequest = new HostelRequest(inn.getId(), hostelName, username, hostelTel, hostelAdd, hostelEmail, hostelDesc, wideBed, doubleBed, seaBed, "修改信息");
+        requestRepository.save(hostelRequest);
 
         ownerRepository.save(owner);
     }

@@ -1,7 +1,7 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.MoneyGiveBackDao;
-import cn.chenhaonee.hostelWorld.dao.PullRequestRepository;
+import cn.chenhaonee.hostelWorld.repository.MoneyGiveBackRepository;
+import cn.chenhaonee.hostelWorld.repository.PullRequestRepository;
 import cn.chenhaonee.hostelWorld.domain.BinaryData;
 import cn.chenhaonee.hostelWorld.domain.TTODouble;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
@@ -9,7 +9,7 @@ import cn.chenhaonee.hostelWorld.model.Inn.Room;
 import cn.chenhaonee.hostelWorld.model.Member.Member;
 import cn.chenhaonee.hostelWorld.model.MoneyGiveBack;
 import cn.chenhaonee.hostelWorld.model.common.OrderBill;
-import cn.chenhaonee.hostelWorld.model.common.PullRequest;
+import cn.chenhaonee.hostelWorld.model.common.HostelRequest;
 import cn.chenhaonee.hostelWorld.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,15 +37,15 @@ public class ManagerService {
     private MemberService memberService;
 
     @Autowired
-    private MoneyGiveBackDao moneyGiveBackDao;
+    private MoneyGiveBackRepository moneyGiveBackRepository;
 
-    public List<PullRequest> getAllRequests() {
-        List<PullRequest> requests = pullRequestRepository.findByAvalibleDateIsNull();
+    public List<HostelRequest> getAllRequests() {
+        List<HostelRequest> requests = pullRequestRepository.findByAvalibleDateIsNull();
         return requests;
     }
 
     public void confirm(Long id) {
-        PullRequest request = pullRequestRepository.findOne(id);
+        HostelRequest request = pullRequestRepository.findOne(id);
         request.setAvalibleDate(Calendar.getInstance().getTime());
         request.setType("已生效");
         pullRequestRepository.save(request);
@@ -64,7 +64,7 @@ public class ManagerService {
     }
 
     public void deny(Long id) {
-        PullRequest request = pullRequestRepository.findOne(id);
+        HostelRequest request = pullRequestRepository.findOne(id);
         request.setAvalibleDate(Calendar.getInstance().getTime());
         request.setType("已拒绝");
         pullRequestRepository.save(request);
@@ -102,7 +102,7 @@ public class ManagerService {
             double money = bills.stream().filter(orderBill -> orderBill.getUsername() != null).map(orderBill -> orderBill.getCost()).reduce(Double::sum).get();
 
             double alreadyPaid = 0;
-            MoneyGiveBack moneyGiveBack = moneyGiveBackDao.findByInnName(inn.getId());
+            MoneyGiveBack moneyGiveBack = moneyGiveBackRepository.findByInnName(inn.getId());
             if (moneyGiveBack != null)
                 alreadyPaid = moneyGiveBack.getAlreadyPaid();
             TTODouble tto = new TTODouble(inn.getId(), inn.getNameForInn(), money - alreadyPaid);
@@ -113,11 +113,11 @@ public class ManagerService {
     }
 
     public void returnMoney(String innId, double money) {
-        MoneyGiveBack moneyGiveBack = moneyGiveBackDao.findByInnName(innId);
+        MoneyGiveBack moneyGiveBack = moneyGiveBackRepository.findByInnName(innId);
         if (moneyGiveBack == null)
             moneyGiveBack = new MoneyGiveBack(innId, money);
         else
             moneyGiveBack.addAlreadyPaid(money);
-        moneyGiveBackDao.save(moneyGiveBack);
+        moneyGiveBackRepository.save(moneyGiveBack);
     }
 }

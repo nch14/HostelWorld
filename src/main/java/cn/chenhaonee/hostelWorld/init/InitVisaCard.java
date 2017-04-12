@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.init;
 
-import cn.chenhaonee.hostelWorld.dao.VisaCardRepository;
+import cn.chenhaonee.hostelWorld.repository.VisaCardRepository;
 import cn.chenhaonee.hostelWorld.model.Member.VisaCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

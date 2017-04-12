@@ -1,14 +1,12 @@
 package cn.chenhaonee.hostelWorld.controller;
 
 import cn.chenhaonee.hostelWorld.model.Inn.InnOwner;
-import cn.chenhaonee.hostelWorld.model.Msg;
 import cn.chenhaonee.hostelWorld.service.InnOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;

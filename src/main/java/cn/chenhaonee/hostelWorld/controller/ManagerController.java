@@ -3,7 +3,7 @@ package cn.chenhaonee.hostelWorld.controller;
 import cn.chenhaonee.hostelWorld.domain.BinaryData;
 import cn.chenhaonee.hostelWorld.domain.TTODouble;
 import cn.chenhaonee.hostelWorld.model.Member.Member;
-import cn.chenhaonee.hostelWorld.model.common.PullRequest;
+import cn.chenhaonee.hostelWorld.model.common.HostelRequest;
 import cn.chenhaonee.hostelWorld.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class ManagerController {
     private ManagerService managerService;
 
     @RequestMapping(value = "/request")
-    public List<PullRequest> getAllRequests() {
+    public List<HostelRequest> getAllRequests() {
         return managerService.getAllRequests();
     }
 

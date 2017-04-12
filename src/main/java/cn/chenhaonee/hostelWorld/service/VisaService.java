@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.VisaCardRepository;
+import cn.chenhaonee.hostelWorld.repository.VisaCardRepository;
 import cn.chenhaonee.hostelWorld.exception.NoSuchVisaCardException;
 import cn.chenhaonee.hostelWorld.exception.VisaCardCheckFailureException;
 import cn.chenhaonee.hostelWorld.model.Member.VisaCard;

@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.util;
 
-import cn.chenhaonee.hostelWorld.dao.MemberShipValidDao;
+import cn.chenhaonee.hostelWorld.repository.MemberShipValidRepository;
 import cn.chenhaonee.hostelWorld.exception.NoSuchUserException;
 import cn.chenhaonee.hostelWorld.model.Member.MemberCard;
 import cn.chenhaonee.hostelWorld.model.MemberShipValid;
@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 public class MemberStateChecker {
 
     @Autowired
-    private MemberShipValidDao memberShipValidDao;
+    private MemberShipValidRepository memberShipValidRepository;
 
     @Autowired
     private MemberCardService memberCardService;
@@ -38,7 +38,7 @@ public class MemberStateChecker {
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(() -> {
             while (true) {
-                List<MemberShipValid> memberShipValids = memberShipValidDao.findAll();
+                List<MemberShipValid> memberShipValids = memberShipValidRepository.findAll();
                 LocalDate today = LocalDate.now();
                 Date date = new Date(today.getYear(), today.getMonthValue(), today.getDayOfMonth());
                 memberShipValids.stream()
@@ -59,7 +59,7 @@ public class MemberStateChecker {
                                     e.printStackTrace();
                                 }
                             }
-                            memberShipValidDao.save(memberShipValid);
+                            memberShipValidRepository.save(memberShipValid);
                         });
                 Thread.sleep(24*3600*1000);
             }

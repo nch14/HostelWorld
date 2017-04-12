@@ -13,10 +13,8 @@
     <script type="text/javascript" src="scripts/jqueryui.js"></script>
     <script type="text/javascript" src="scripts/json2.js"></script>
     <script type="text/javascript" src="scripts/jquery-form.js"></script>
-
-    <!--<script src="scripts/echarts.js"></script>-->
     <script src="scripts/hostel.js"></script>
-    <!--<script src="scripts/goods.js"></script>-->
+
     <title>酒店计划</title>
 </head>
 <body>
@@ -39,30 +37,10 @@
 
         </div>
     </div>
-    <!--头部bar结束-->
-    <!--商品概况开始-->
-    <!--enctype="multipart/form-data"-->
+
     <div class="goods-basic">
         <form class="new-goods-center" name="uploadGoodsForm" enctype="multipart/form-data">
-            <!--<form id="newGoodsForm" action="https://707.chenhaonee.cn:8443/v1/product/add" method="post" >-->
 
-            <!--<div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">-->
-                <!--<p class="new-product-per-p">房间种类</p>-->
-                <!--<select class="new-product-per-input" name="categoryId" id="roomCategory">-->
-                    <!--&lt;!&ndash;<option value="9">美容彩妆</option>&ndash;&gt;-->
-                    <!--<option value="浴缸大床房">浴缸大床房</option>-->
-                    <!--<option value="标准双床房">标准双床房</option>-->
-                    <!--<option value="海景休闲房">海景休闲房</option>-->
-                <!--</select>-->
-            <!--</div>-->
-
-            <!--<div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">-->
-                <!--<p class="new-product-per-div-p">开始日期</p>-->
-                <!--<input type="date" class="new-product-per-div-date">-->
-                <!--<p class="new-product-per-div-p">结束日期</p>-->
-                <!--<input type="date" class="new-product-per-div-date">-->
-            <!--</div>-->
-            <!--<div class="input-pic-div">-->
             <span id="addNewProperty">
                  <div class="new-product-per-div" onclick="showGoodsMiddleCategoryNotice()">
                      <p class="new-product-per-p" id="wideP">浴缸大床房</p>
@@ -85,7 +63,6 @@
                 <p class="text-to-center">确定</p>
             </div>
 
-            <!--</form>-->
         </form>
 
 
@@ -137,7 +114,6 @@
            async: false,
            success: function (data) {
                location.reload();
-
            }
        });
    }

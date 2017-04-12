@@ -33,16 +33,6 @@ function selectImage(file){
         document.getElementById('image'+imageId).src = evt.target.result;
         image = evt.target.result;
         var fd = new FormData();
-        //var blob = dataURItoBlob(image);
-        //alert(blob);
-        //imageList.push(image);
-        //imageList.push("123456");
-        //alert(image);
-        //alert("list length "+ imageList);
-        //formData.append('goodDisplayImgs',imageList );
-        //alert("top fd is "+fd.file);
-        //imageList.push(fd);
-        //alert("push is finished!");
     }
     reader.readAsDataURL(file.files[0]);
 }

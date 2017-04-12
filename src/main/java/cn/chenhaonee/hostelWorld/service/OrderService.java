@@ -1,8 +1,8 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.OrderRepository;
-import cn.chenhaonee.hostelWorld.dao.PriceDao;
-import cn.chenhaonee.hostelWorld.dao.RoomArragementDao;
+import cn.chenhaonee.hostelWorld.repository.OrderRepository;
+import cn.chenhaonee.hostelWorld.repository.PriceRepository;
+import cn.chenhaonee.hostelWorld.repository.RoomArragementRepository;
 import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.Inn.Room;
 import cn.chenhaonee.hostelWorld.model.Member.Member;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +30,7 @@ public class OrderService {
     private RoomService roomService;
 
     @Autowired
-    private RoomArragementDao roomArragementDao;
+    private RoomArragementRepository roomArragementRepository;
 
     @Autowired
     private MemberService memberService;
@@ -40,7 +39,7 @@ public class OrderService {
     private MemberCardService memberCardService;
 
     @Autowired
-    private PriceDao priceDao;
+    private PriceRepository priceRepository;
 
     @Autowired
     private InnService innService;
@@ -67,7 +66,7 @@ public class OrderService {
         int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
-            List<RoomArrangement> roomArrangements = roomArragementDao.findByInnNameAndDate(inn, thisDay);
+            List<RoomArrangement> roomArrangements = roomArragementRepository.findByInnNameAndDate(inn, thisDay);
             roomIds.addAll(roomArrangements.stream().map(roomArrangement -> roomArrangement.getRoomId()).collect(Collectors.toList()));
         }
 
@@ -84,7 +83,7 @@ public class OrderService {
 
         int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
 
-        Price price = priceDao.findByInnOwnerNameAndRoomType(inn.getNameForInnOwner(), room.getRoomType());
+        Price price = priceRepository.findByInnOwnerNameAndRoomType(inn.getNameForInnOwner(), room.getRoomType());
         double cost = days * price.getPrice() * discount;
 
 
@@ -96,7 +95,7 @@ public class OrderService {
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
             RoomArrangement roomArrangement = new RoomArrangement(room.getId(), username, hotelId, thisDay);
-            roomArragementDao.save(roomArrangement);
+            roomArragementRepository.save(roomArrangement);
         }
 
     }
@@ -112,7 +111,7 @@ public class OrderService {
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
             RoomArrangement roomArrangement = new RoomArrangement(room.getId(), username, hotelId, thisDay);
-            roomArragementDao.save(roomArrangement);
+            roomArragementRepository.save(roomArrangement);
         }
 
         return orderBill;
@@ -130,7 +129,7 @@ public class OrderService {
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
             RoomArrangement roomArrangement = new RoomArrangement(room.getId(), username, hotelId, thisDay);
-            roomArragementDao.save(roomArrangement);
+            roomArragementRepository.save(roomArrangement);
         }
 
         return orderBill;
@@ -146,9 +145,9 @@ public class OrderService {
         int days = (int) ((outDate.getTime() - inDate.getTime()) / (1000 * 60 * 60 * 24));
         for (int i = 0; i < days; i++) {
             Date thisDay = new Date(inDate.getTime() + i * 1000 * 60 * 60 * 24);
-            RoomArrangement roomArrangement = roomArragementDao.findByRoomIdAndInnNameAndDate(orderBill.getRoom().getId(), orderBill.getInn(), thisDay);
+            RoomArrangement roomArrangement = roomArragementRepository.findByRoomIdAndInnNameAndDate(orderBill.getRoom().getId(), orderBill.getInn(), thisDay);
             if (roomArrangement != null)
-                roomArragementDao.delete(roomArrangement);
+                roomArragementRepository.delete(roomArrangement);
         }
 
     }

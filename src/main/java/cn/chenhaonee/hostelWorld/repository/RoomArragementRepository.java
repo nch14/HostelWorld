@@ -1,4 +1,4 @@
-package cn.chenhaonee.hostelWorld.dao;
+package cn.chenhaonee.hostelWorld.repository;
 
 import cn.chenhaonee.hostelWorld.model.common.RoomArrangement;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by nichenhao on 2017/3/21.
  */
-public interface RoomArragementDao extends JpaRepository<RoomArrangement, Long> {
+public interface RoomArragementRepository extends JpaRepository<RoomArrangement, Long> {
 
     RoomArrangement findByRoomIdAndInnNameAndDate(Long roomId, String inn, Date date);
 

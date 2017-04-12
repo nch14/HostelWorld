@@ -1,11 +1,8 @@
 package cn.chenhaonee.hostelWorld;
 
-import cn.chenhaonee.hostelWorld.dao.ManagerDao;
-import cn.chenhaonee.hostelWorld.dao.MemberRepository;
+import cn.chenhaonee.hostelWorld.repository.ManagerRepository;
 import cn.chenhaonee.hostelWorld.init.InitVisaCard;
 import cn.chenhaonee.hostelWorld.model.Manager;
-import cn.chenhaonee.hostelWorld.model.Member.Member;
-import cn.chenhaonee.hostelWorld.model.Role;
 import cn.chenhaonee.hostelWorld.util.MemberStateChecker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,7 +27,7 @@ public class Application implements CommandLineRunner {
     private InitVisaCard initVisaCard;
 
     @Autowired
-    private ManagerDao managerDao;
+    private ManagerRepository managerRepository;
 
     @Autowired
     private MemberStateChecker memberStateChecker;
@@ -38,9 +35,9 @@ public class Application implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        if (managerDao.findOne("manager")==null){
+        if (managerRepository.findOne("manager")==null){
             Manager manager = new Manager("manager", new BCryptPasswordEncoder().encode("manager"));
-            managerDao.save(manager);
+            managerRepository.save(manager);
             initVisaCard.init();
         }
         memberStateChecker.run();

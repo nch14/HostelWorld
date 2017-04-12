@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by nichenhao on 2017/3/21.
  */
 @Entity
-public class PullRequest {
+public class HostelRequest {
     @Id
     @GeneratedValue
     private Long id;
@@ -41,9 +41,9 @@ public class PullRequest {
 
     private String type;
 
-    public PullRequest(String innId, String nameForInn, String nameForInnOwner, String telNumber, String address,
-                       String emailAddress, String hostelDesc, String wideBed,
-                       String doubleBed, String seaBed, String type) {
+    public HostelRequest(String innId, String nameForInn, String nameForInnOwner, String telNumber, String address,
+                         String emailAddress, String hostelDesc, String wideBed,
+                         String doubleBed, String seaBed, String type) {
         this.innId = innId;
         this.nameForInn = nameForInn;
         this.nameForInnOwner = nameForInnOwner;
@@ -58,7 +58,7 @@ public class PullRequest {
         this.type = type;
     }
 
-    public PullRequest() {
+    public HostelRequest() {
 
     }
 

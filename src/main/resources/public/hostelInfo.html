@@ -13,15 +13,12 @@
     <script type="text/javascript" src="scripts/jqueryui.js"></script>
     <script type="text/javascript" src="scripts/json2.js"></script>
     <script type="text/javascript" src="scripts/jquery-form.js"></script>
-    <!--<script src="scripts/echarts.js"></script>-->
     <script src="scripts/hostel.js"></script>
-    <!--<script src="scripts/saler.js"></script>-->
     <title>申请开店</title>
 </head>
 <body>
 
 <div class="boss-allEelments">
-    <!--头部bar开始-->
     <div class="boss-top-bar">
         <p class="shop-head">Hostel World</p>
 
@@ -39,12 +36,9 @@
 
         </div>
     </div>
-    <!--头部bar结束-->
-    <!--商品概况开始-->
-    <!--enctype="multipart/form-data"-->
+
     <div class="goods-basic">
-        <!--<div class="new-goods-left">-->
-        <!--<iframe name="myiframe" style="display:none;"></iframe>-->
+
         <form id="newSalerForm" class="new-goods-center" >
             <div class="new-product-per-div no-padding-element">
                 <p class="new-product-per-p">酒店名字</p>
@@ -74,15 +68,11 @@
                 <p class="new-product-per-p-high">房间型号:浴缸大床房</p>
                 <div class="per-input-div" id="inputc1">
                     <textarea type="text" id="wideBed"></textarea>
-                    <!--<button id="c1" onclick="deleteThisInput(this)">X</button>-->
                 </div>
                 <span id="addInput1">
 
                 </span>
 
-                <!--<div class="per-input-div">-->
-                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput1"> 添加房间</div>-->
-                <!--</div>-->
             </div>
 
             <div class="new-product-per-div-high no-padding-element" id="inputDiv2">
@@ -94,9 +84,6 @@
 
                 </span>
 
-                <!--<div class="per-input-div">-->
-                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput2"> 添加房间</div>-->
-                <!--</div>-->
             </div>
 
 
@@ -109,18 +96,12 @@
 
                 </span>
 
-                <!--<div class="per-input-div">-->
-                    <!--<div class="addRoom-btn" onclick="addPerInput(this)" aid="addInput3"> 添加房间</div>-->
-                <!--</div>-->
             </div>
 
             <div class="new-product-per-div pink-btn">
                 <p class="text-to-center" onclick="submitHostel()">确定</p>
             </div>
-            <!--<input type="submit" class="product-notice-div commit-newSaler-div text-big" onclick="checkIfNull" onmousemove="toPic()" onmouseout="toText()" value="确认提交">-->
         </form>
-        <!--</div>-->
-
 
     </div>
 </div>
@@ -187,26 +168,6 @@
         });
     }
 
-//    function deleteThisInput(btn) {
-//        var inputToDelete =document.getElementById("input"+btn.id);
-//        var inputDiv= document.getElementById("inputDiv");
-//        inputDiv.removeChild(inputToDelete);
-//    }
-//
-//    function addPerInput(btn) {
-//    <div class="per-input-div" id="inputcc1">
-//            <input type="text"  onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
-//            <button id="cc1" onclick="deleteThisInput(this)">X</button>
-//            </div>
-//                var perInput = document.createElement("div");
-//        perInput.setAttribute("class","per-input-div");
-//        perInput.id="inputcc"+btn.cid;
-//        var perInput  =document.createElement("input");
-//        var deleteBtn = document.createElement("button");
-//
-//
-//
-//    }
 </script>
 </body>
 </html>

@@ -1,6 +1,5 @@
-package cn.chenhaonee.hostelWorld.dao;
+package cn.chenhaonee.hostelWorld.repository;
 
-import cn.chenhaonee.hostelWorld.model.Inn.Inn;
 import cn.chenhaonee.hostelWorld.model.common.OrderBill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

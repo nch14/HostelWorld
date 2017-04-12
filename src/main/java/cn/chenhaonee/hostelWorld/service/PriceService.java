@@ -1,6 +1,6 @@
 package cn.chenhaonee.hostelWorld.service;
 
-import cn.chenhaonee.hostelWorld.dao.PriceDao;
+import cn.chenhaonee.hostelWorld.repository.PriceRepository;
 import cn.chenhaonee.hostelWorld.model.common.Price;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class PriceService {
 
     @Autowired
-    private PriceDao priceDao;
+    private PriceRepository priceRepository;
 
     public double getPrice(String ownerName, String roomType) {
-        Price price = priceDao.findByInnOwnerNameAndRoomType(ownerName, roomType);
+        Price price = priceRepository.findByInnOwnerNameAndRoomType(ownerName, roomType);
         return price.getPrice();
     }
 
